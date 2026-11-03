@@ -1,6 +1,8 @@
 ---
 title: "Vaření bez proudu"
 order: 3
+icon: "pot"
+description: "Jídlo bez vaření, vařič a lednice"
 sources:
   - name: "Ministerstvo vnitra: příručka 72 hodin (2025)"
     url: "https://www.72h.gov.cz/public/files/2025-09/72-hodin-Jak-se-pripravit-na-krizove-situace-a-spolecne-je-zvladnout_.pdf"
@@ -21,7 +23,7 @@ Kuskus, instantní kaši a obilné vločky stačí zalít studenou vodou a počk
 - Rýže a těstoviny potřebují hodně vody i energie. Do nouzových zásob se hodí méně.
 - Když máš vařič, přidej do zásob instantní jídla a polévky.
 
-Používání kempingového vařiče uvnitř bytu: TODO: ověřit
+> Používání kempingového vařiče uvnitř bytu: TODO: ověřit
 
 ## Lednice a mrazák
 

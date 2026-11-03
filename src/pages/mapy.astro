@@ -1,11 +1,13 @@
 ---
 import { getEntry } from 'astro:content';
 import Chapter from '../components/Chapter.astro';
+import PrepTabs from '../components/PrepTabs.astro';
 import Base from '../layouts/Base.astro';
 
 const entry = (await getEntry('kapitoly', 'mapy'))!;
 ---
 
 <Base title={entry.data.title}>
+  <PrepTabs />
   <Chapter entry={entry} />
 </Base>

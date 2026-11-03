@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import Icon from '../../components/Icon.astro';
 import Base from '../../layouts/Base.astro';
 
 const navody = (await getCollection('kapitoly', ({ id }) => id.startsWith('navody/'))).sort(
@@ -10,6 +11,19 @@ const navody = (await getCollection('kapitoly', ({ id }) => id.startsWith('navod
 <Base title="Návody">
   <h1>Návody</h1>
   <ul class="link-list">
-    {navody.map((entry) => <li><a href={`${import.meta.env.BASE_URL}${entry.id}/`}>{entry.data.title}</a></li>)}
+    {
+      navody.map((entry) => (
+        <li>
+          <a class="row-link" href={`${import.meta.env.BASE_URL}${entry.id}/`}>
+            <Icon name={entry.data.icon as 'bolt'} class="row-icon" />
+            <span class="row-text">
+              {entry.data.title}
+              <small>{entry.data.description}</small>
+            </span>
+            <Icon name="chevron" class="row-chevron" />
+          </a>
+        </li>
+      ))
+    }
   </ul>
 </Base>

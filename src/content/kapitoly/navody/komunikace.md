@@ -1,6 +1,8 @@
 ---
 title: "Komunikace bez mobilního signálu"
 order: 6
+icon: "radio"
+description: "Zprávy, šetření baterie a přivolání pomoci"
 sources:
   - name: "Ministerstvo vnitra: příručka 72 hodin (2025)"
     url: "https://www.72h.gov.cz/public/files/2025-09/72-hodin-Jak-se-pripravit-na-krizove-situace-a-spolecne-je-zvladnout_.pdf"
@@ -39,4 +41,4 @@ Ověřuj zprávy z několika důvěryhodných zdrojů. Sdílej jen to, o čem v�
 - Pomoc přivoláš SMS zprávou na kteroukoli tísňovou linku nebo aplikací Záchranka.
 - Nevíš, kde přesně jsi? Řekni číslo z lampy veřejného osvětlení nebo ze železničního přejezdu. Popiš, co vidíš kolem sebe.
 
-Jak přivolat pomoc, když nefunguje žádná síť: TODO: ověřit
+> Jak přivolat pomoc, když nefunguje žádná síť: TODO: ověřit

@@ -76,11 +76,13 @@
   }
 </script>
 
-<section class="backup">
-  <h2>Záloha</h2>
-  <p>Data jsou uložená jen v tomto telefonu. Zálohou je přeneseš do jiného telefonu.</p>
-  <p>Na iPhonu přidej aplikaci na plochu. Jinak může systém data po několika dnech bez použití smazat. Po každé větší změně si ulož novou zálohu.</p>
-  <p>Soubor není zašifrovaný. Posílej ho jen rodině.</p>
+<section class="card backup">
+  <h2 class="card-label">Záloha</h2>
+  <ul class="card-notes">
+    <li>Data jsou uložená jen v tomto telefonu. Zálohou je přeneseš do jiného telefonu.</li>
+    <li>Na iPhonu přidej aplikaci na plochu. Jinak může systém data po několika dnech bez použití smazat. Po každé větší změně si ulož novou zálohu.</li>
+    <li>Soubor není zašifrovaný. Posílej ho jen rodině.</li>
+  </ul>
 
   <div class="backup-actions">
     <button type="button" class="button" onclick={exportBackup}>Uložit zálohu</button>

@@ -1,6 +1,8 @@
 ---
 title: "Voda"
 order: 1
+icon: "droplet"
+description: "Zdroje, převaření a skladování"
 sources:
   - name: "Ministerstvo vnitra: Voda"
     url: "https://www.72h.gov.cz/cs/voda"
@@ -24,7 +26,7 @@ sources:
 - Když voda dlouho neteče, řiď se pokyny dodavatele vody.
 - Vodu ze zaplavené studny používej jen na mytí. Na pití, výplach úst a vaření používej balenou vodu, dokud ji nejde používat jako pitnou. Výjimečně ji můžeš pít po převaření.
 
-Voda z potoka, řeky nebo rybníka: TODO: ověřit
+> Voda z potoka, řeky nebo rybníka: TODO: ověřit
 
 ## Převaření
 
@@ -38,7 +40,7 @@ Převař vodu, když máš pochybnosti, jestli je mikrobiálně nezávadná. Pos
 
 ## Dezinfekce chlórem
 
-Dávkování pro domácnost: TODO: ověřit
+> Dávkování pro domácnost: TODO: ověřit
 
 SZÚ popisuje chlorové přípravky pro menší objemy vody, ale s přesnými dávkami a následnou dechlorací vody. Chlór navíc nepůsobí proti některým prvokům. Dávky si nedomýšlej.
 
@@ -48,4 +50,4 @@ SZÚ popisuje chlorové přípravky pro menší objemy vody, ale s přesnými d�
 - Pokud o výpadku víš předem, napusť si do nich zásobu.
 - Část zásoby můžeš zmrazit v plastových lahvích. Neplň je až po okraj, aby nepraskly. Led pomůže s chlazením a později ho vypiješ jako vodu.
 
-Jak dlouho lze vodu napuštěnou doma skladovat: TODO: ověřit
+> Jak dlouho lze vodu napuštěnou doma skladovat: TODO: ověřit

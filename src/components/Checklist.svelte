@@ -36,6 +36,8 @@
 
   const keyOf = (group: Group, item: Item) => `${group.id}/${item.id}`;
   const doneIn = (group: Group) => group.items.filter((item) => data.checked[keyOf(group, item)]).length;
+  const total = $derived(groups.reduce((sum, group) => sum + group.items.length, 0));
+  const done = $derived(groups.reduce((sum, group) => sum + doneIn(group), 0));
 
   function save() {
     saveFailed = !saveChecklist($state.snapshot(data), storageKey);
@@ -66,14 +68,20 @@
   <p class="notice" role="alert">Změnu se nepodařilo uložit. Po zavření aplikace se ztratí.</p>
 {/if}
 
-{#if showPersons}
-  <div class="stepper" role="group" aria-label="Počet osob">
-    <span class="stepper-label">Počet osob</span>
-    <button type="button" class="button" aria-label="Ubrat osobu" disabled={data.persons <= MIN_PERSONS} onclick={() => setPersons(data.persons - 1)}>−</button>
-    <output class="stepper-value" aria-live="polite">{data.persons}</output>
-    <button type="button" class="button" aria-label="Přidat osobu" disabled={data.persons >= MAX_PERSONS} onclick={() => setPersons(data.persons + 1)}>+</button>
+<div class="card progress-card">
+  <p class="progress-text"><strong class="check-total">{done} z {total}</strong> připraveno</p>
+  <div class="progress" role="progressbar" aria-label="Připraveno" aria-valuemin="0" aria-valuemax={total} aria-valuenow={done}>
+    <span style:width="{total ? (done / total) * 100 : 0}%"></span>
   </div>
-{/if}
+  {#if showPersons}
+    <div class="stepper" role="group" aria-label="Počet osob">
+      <span class="stepper-label">Počet osob</span>
+      <button type="button" class="button" aria-label="Ubrat osobu" disabled={data.persons <= MIN_PERSONS} onclick={() => setPersons(data.persons - 1)}>−</button>
+      <output class="stepper-value" aria-live="polite">{data.persons}</output>
+      <button type="button" class="button" aria-label="Přidat osobu" disabled={data.persons >= MAX_PERSONS} onclick={() => setPersons(data.persons + 1)}>+</button>
+    </div>
+  {/if}
+</div>
 
 {#each groups as group (group.id)}
   <section class="check-group">

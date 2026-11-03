@@ -4,6 +4,7 @@ import BackupPanel from '../components/BackupPanel.svelte';
 import BagCheckPanel from '../components/BagCheckPanel.svelte';
 import Chapter from '../components/Chapter.astro';
 import Checklist from '../components/Checklist.svelte';
+import PrepTabs from '../components/PrepTabs.astro';
 import Base from '../layouts/Base.astro';
 import { BAG_CHECKLIST_KEY } from '../lib/checklist';
 
@@ -12,8 +13,9 @@ const checklist = (await getEntry('checklisty', 'evakuacni-zavazadlo'))!;
 ---
 
 <Base title={entry.data.title}>
+  <PrepTabs />
   <Chapter entry={entry}>
-    <BagCheckPanel client:load />
+    <BagCheckPanel slot="top" client:load />
     <Checklist client:load groups={checklist.data.groups} storageKey={BAG_CHECKLIST_KEY} showPersons={false} />
     <BackupPanel client:load />
   </Chapter>

@@ -1,6 +1,8 @@
 ---
 title: "První pomoc"
 order: 5
+icon: "heart"
+description: "Resuscitace, krvácení, dušení a popáleniny"
 sources:
   - name: "Český červený kříž: Standardy první pomoci (revidované vydání)"
     url: "https://www.cervenykriz.eu/files/files/cz/standardy/standardy-prvni-pomoci-2017.pdf"

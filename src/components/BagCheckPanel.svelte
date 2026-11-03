@@ -22,14 +22,14 @@
   });
 </script>
 
-<section class="bag-check">
-  <h2>Poslední kontrola</h2>
+<section class="card bag-check">
+  <h2 class="card-label">Poslední kontrola</h2>
   {#if check}
     <p class="bag-check-date">{formatCheckDate(check.lastChecked)} ({formatCheckAge(daysSince(check.lastChecked))})</p>
   {:else}
     <p class="bag-check-date">Zatím bez kontroly</p>
   {/if}
-  <p>Při kontrole projdi trvanlivost jídla, vody a léků. Zkontroluj baterie a nabij powerbanku.</p>
+  <p class="card-note">Při kontrole projdi trvanlivost jídla, vody a léků. Zkontroluj baterie a nabij powerbanku.</p>
   {#if saveFailed}
     <p class="notice" role="alert">Datum se nepodařilo uložit.</p>
   {/if}

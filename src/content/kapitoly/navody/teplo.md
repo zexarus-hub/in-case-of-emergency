@@ -1,6 +1,8 @@
 ---
 title: "Teplo"
 order: 2
+icon: "flame"
+description: "Teplo v bytě, topení a oxid uhelnatý"
 sources:
   - name: "Ministerstvo vnitra: příručka 72 hodin (2025)"
     url: "https://www.72h.gov.cz/public/files/2025-09/72-hodin-Jak-se-pripravit-na-krizove-situace-a-spolecne-je-zvladnout_.pdf"

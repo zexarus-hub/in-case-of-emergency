@@ -10,6 +10,7 @@ const { Content } = await render(entry);
 ---
 
 <h1>{entry.data.title}</h1>
+<slot name="top" />
 <div class="prose">
   <Content />
 </div>

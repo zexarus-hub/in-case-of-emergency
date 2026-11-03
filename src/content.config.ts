@@ -6,8 +6,10 @@ const kapitoly = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/kapitoly' }),
   schema: z.object({
     title: z.string(),
-    // Pořadí v seznamu návodů.
+    // Pořadí, ikona a popisek pro rozcestníky situací a návodů.
     order: z.number().optional(),
+    icon: z.string().optional(),
+    description: z.string().optional(),
     // Každá kapitola musí uvádět aspoň jeden zdroj.
     sources: z.array(z.object({ name: z.string(), url: z.string().optional() })).min(1),
   }),

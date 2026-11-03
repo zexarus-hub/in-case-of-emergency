@@ -1,0 +1,19 @@
+---
+const base = import.meta.env.BASE_URL;
+const tabs = [
+  { href: 'pripav-se/', label: 'Zásoby' },
+  { href: 'evakuacni-zavazadlo/', label: 'Zavazadlo' },
+  { href: 'mapy/', label: 'Mapy' },
+];
+const current = Astro.url.pathname;
+---
+
+<nav class="segmented" aria-label="Příprava">
+  {
+    tabs.map((tab) => (
+      <a href={`${base}${tab.href}`} aria-current={current.startsWith(`${base}${tab.href}`) ? 'page' : undefined}>
+        {tab.label}
+      </a>
+    ))
+  }
+</nav>

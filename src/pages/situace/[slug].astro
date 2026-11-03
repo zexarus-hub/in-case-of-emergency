@@ -1,0 +1,23 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Chapter from '../../components/Chapter.astro';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const situace = await getCollection('kapitoly', ({ id }) => id.startsWith('situace/'));
+  return situace.map((entry) => ({
+    params: { slug: entry.id.replace('situace/', '') },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'kapitoly'>;
+}
+
+const { entry } = Astro.props;
+---
+
+<Base title={entry.data.title} back={{ href: '', label: 'Pomoc' }}>
+  <Chapter entry={entry} />
+</Base>

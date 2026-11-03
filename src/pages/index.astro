@@ -1,11 +1,51 @@
 ---
-import { getEntry } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import Chapter from '../components/Chapter.astro';
+import Icon from '../components/Icon.astro';
 import Base from '../layouts/Base.astro';
 
 const entry = (await getEntry('kapitoly', 'rychla-pomoc'))!;
+const situace = (await getCollection('kapitoly', ({ id }) => id.startsWith('situace/'))).sort(
+  (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0),
+);
+const base = import.meta.env.BASE_URL;
+const numbers = [
+  { number: '155', label: 'Záchranka' },
+  { number: '112', label: 'Tísňová linka' },
+  { number: '150', label: 'Hasiči' },
+  { number: '158', label: 'Policie' },
+];
 ---
 
 <Base title={entry.data.title}>
-  <Chapter entry={entry} />
+  <Chapter entry={entry}>
+    <Fragment slot="top">
+      <div class="phone-grid">
+        {
+          numbers.map((item) => (
+            <a href={`tel:${item.number}`}>
+              <strong>{item.number}</strong>
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+      <h2 class="section-title">Co se děje?</h2>
+      <div class="tile-grid">
+        <a class="tile tile-wide tile-urgent" href={`${base}navody/prvni-pomoc/`}>
+          <Icon name="heart" />
+          První pomoc
+          <Icon name="chevron" class="tile-chevron" />
+        </a>
+        {
+          situace.map((item) => (
+            <a class="tile" href={`${base}${item.id}/`}>
+              <Icon name={item.data.icon as 'bolt'} />
+              {item.data.title}
+            </a>
+          ))
+        }
+      </div>
+    </Fragment>
+  </Chapter>
 </Base>

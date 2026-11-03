@@ -1,12 +1,15 @@
 ---
+import Icon from '../components/Icon.astro';
 import Nav from '../components/Nav.astro';
 import '../styles/global.css';
 
 interface Props {
   title: string;
+  // Odkaz zpět na nadřazenou stránku. Stránky hlavní navigace ho nemají.
+  back?: { href: string; label: string };
 }
 
-const { title } = Astro.props;
+const { title, back } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const swUrl = `${base}sw.js`;
 ---
@@ -40,8 +43,31 @@ const swUrl = `${base}sw.js`;
   </head>
   <body>
     <header class="app-header">
-      <span class="app-title">Krizová příručka</span>
-      <button class="theme-toggle" type="button" data-theme-toggle hidden></button>
+      {
+        back ? (
+          <a class="back-link" href={`${base}${back.href}`}>
+            <Icon name="back" />
+            {back.label}
+          </a>
+        ) : (
+          <span class="app-title">Krizová příručka</span>
+        )
+      }
+      <div class="header-actions">
+        <button class="icon-button" type="button" data-theme-toggle hidden>
+          <Icon name="sun" class="icon-sun" />
+          <Icon name="moon" class="icon-moon" />
+        </button>
+        {
+          /* Úvodní obrazovka má vlastní velké tlačítko 155. */
+          Astro.url.pathname !== base && (
+            <a class="icon-button icon-button-call" href="tel:155" aria-label="Zavolat záchranku 155">
+              <Icon name="phone" />
+              155
+            </a>
+          )
+        }
+      </div>
     </header>
     <main class="page">
       <slot />

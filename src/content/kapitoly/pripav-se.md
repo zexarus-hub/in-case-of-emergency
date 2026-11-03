@@ -11,6 +11,4 @@ sources:
     url: "https://www.72h.gov.cz/cs/prvni-pomoc"
 ---
 
-Zásoby mají vystačit celé domácnosti na 72 hodin. Využij běžné trvanlivé potraviny a věci, které už doma máš, a průběžně je doplňuj při nákupech.
-
-Množství je přepočtené podle počtu osob. Voda vychází z nouzového minima pro dospělého: 2 litry denně, tedy 6 litrů na 72 hodin. U ostatních položek zdroje množství neuvádějí.
+Zásoby mají vystačit celé domácnosti na 72 hodin. Voda počítá s nouzovým minimem 2 litry denně na dospělého. U ostatních položek zdroje množství neuvádějí.

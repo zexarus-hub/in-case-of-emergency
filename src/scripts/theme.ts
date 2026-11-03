@@ -6,7 +6,7 @@ const button = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
 function apply(theme: string) {
   document.documentElement.dataset.theme = theme;
   document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'light' ? '#ffffff' : '#000000');
-  if (button) button.textContent = theme === 'light' ? 'Tmavý režim' : 'Světlý režim';
+  button?.setAttribute('aria-label', theme === 'light' ? 'Přepnout na tmavý režim' : 'Přepnout na světlý režim');
 }
 
 if (button) {
