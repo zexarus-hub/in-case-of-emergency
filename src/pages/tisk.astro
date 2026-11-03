@@ -1,0 +1,230 @@
+---
+import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
+import PrintPlan from '../components/PrintPlan.svelte';
+import Base from '../layouts/Base.astro';
+import { BAG_CHECKLIST_KEY, CHECKLIST_KEY, formatQuantity } from '../lib/checklist';
+
+type Chapter = CollectionEntry<'kapitoly'>;
+
+const byOrder = (a: Chapter, b: Chapter) => (a.data.order ?? 0) - (b.data.order ?? 0);
+const chapter = async (id: string) => (await getEntry('kapitoly', id))!;
+const inFolder = async (folder: string) =>
+  (await getCollection('kapitoly', ({ id }) => id.startsWith(`${folder}/`))).sort(byOrder);
+
+// Na papíře se odkazy mění na text. O jednu úroveň se sníží i nadpisy, protože kapitola tu má h2.
+function paperHtml(entry: Chapter): string {
+  return (entry.rendered?.html ?? '')
+    .replace(/<ul class="link-list jump-list">[\s\S]*?<\/ul>/g, '')
+    .replace(/<a\b[^>]*>([\s\S]*?)<\/a>/g, '$1')
+    .replace(/\sid="[^"]*"/g, '')
+    .replace(/<(\/?)h3>/g, '<$1h4>')
+    .replace(/<(\/?)h2>/g, '<$1h3>');
+}
+
+const home = await chapter('rychla-pomoc');
+const situations = await inFolder('situace');
+const supplies = await chapter('pripav-se');
+const suppliesList = (await getEntry('checklisty', 'pripav-se'))!;
+const guides = await inFolder('navody');
+const plan = await chapter('rodinny-plan');
+const bag = await chapter('evakuacni-zavazadlo');
+const bagList = (await getEntry('checklisty', 'evakuacni-zavazadlo'))!;
+const maps = await chapter('mapy');
+
+const contents = ['Rychlá pomoc', 'Připrav se', 'Návody', 'Rodinný plán', 'Evakuační zavazadlo', 'Mapy'];
+const numbers = [
+  { number: '155', label: 'Záchranka' },
+  { number: '112', label: 'Tísňová linka' },
+  { number: '150', label: 'Hasiči' },
+  { number: '158', label: 'Policie' },
+];
+---
+
+<Base title="Vytisknout příručku" back={{ href: '', label: 'Pomoc' }}>
+  <div class="print-screen">
+    <h1>Vytisknout příručku</h1>
+    <p>Telefon se může vybít. Vytiskni celou příručku černobíle, včetně vyplněného plánu, a dej kopii každému.</p>
+    <section class="card">
+      <h2 class="card-label">Co se vytiskne</h2>
+      <ul class="print-contents">
+        <li>Rychlá pomoc</li>
+        <li>Zásoby, <span data-screen-supplies>tvoje zaškrtnutí</span></li>
+        <li>Návody</li>
+        <li>Rodinný plán, <span data-screen-plan>tvoje údaje</span></li>
+        <li>Evakuační zavazadlo</li>
+        <li>Mapy: návod na stažení</li>
+      </ul>
+    </section>
+    <p class="notice">Výtisk obsahuje tvůj rodinný plán: jména, telefony a místa srazu. Dávej ho jen rodině.</p>
+    <button type="button" class="button button-primary print-all" data-print-all>Vytisknout vše</button>
+    <p class="print-hint">V nabídce tisku můžeš zvolit i uložení do PDF. Když se na telefonu tisk neotevře, otevři příručku v prohlížeči a zvol tisk tam.</p>
+  </div>
+
+  <div class="print-book">
+    <section class="print-cover">
+      <h1>Krizová příručka</h1>
+      <p data-print-date></p>
+      <div class="print-numbers">
+        {
+          numbers.map((item) => (
+            <p>
+              <strong>{item.number}</strong> {item.label}
+            </p>
+          ))
+        }
+      </div>
+      <h2>Obsah</h2>
+      <ol>{contents.map((title) => <li>{title}</li>)}</ol>
+    </section>
+
+    <section class="print-part">
+      <h1>Rychlá pomoc</h1>
+      <div class="print-prose" set:html={paperHtml(home)} />
+      {
+        situations.map((entry) => (
+          <article class="print-chapter">
+            <h2>{entry.data.title}</h2>
+            <div class="print-prose" set:html={paperHtml(entry)} />
+          </article>
+        ))
+      }
+      <p class="print-sources">
+        <strong>Zdroje:</strong>
+        {
+          [...new Map([home, ...situations].flatMap((entry) => entry.data.sources).map((source) => [source.name, source])).values()].map(
+            (source) => (
+              <span>
+                {source.name}: {source.url}.{' '}
+              </span>
+            ),
+          )
+        }
+      </p>
+    </section>
+
+    <section class="print-part">
+      <h1>Připrav se</h1>
+      <div class="print-prose" set:html={paperHtml(supplies)} />
+      <div class="print-checklist" data-storage={CHECKLIST_KEY}>
+        <p>Počet osob: <strong data-persons>1</strong></p>
+        {
+          suppliesList.data.groups.map((group) => (
+            <section class="print-group">
+              <h3>{group.title}</h3>
+              <ul>
+                {group.items.map((item) => (
+                  <li>
+                    <span class="print-box" data-key={`${group.id}/${item.id}`} />
+                    {item.text}
+                    {item.perPerson && item.unit && (
+                      <strong data-per-person={item.perPerson} data-unit={item.unit}>
+                        {formatQuantity(item.perPerson, item.unit, 1)}
+                      </strong>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))
+        }
+      </div>
+      <p class="print-sources">
+        <strong>Zdroje:</strong>
+        {
+          supplies.data.sources.map((source) => (
+            <span>
+              {source.name}: {source.url}.{' '}
+            </span>
+          ))
+        }
+      </p>
+    </section>
+
+    <section class="print-part">
+      <h1>Návody</h1>
+      {
+        guides.map((entry) => (
+          <article class="print-chapter">
+            <h2>{entry.data.title}</h2>
+            <div class="print-prose" set:html={paperHtml(entry)} />
+            <p class="print-sources">
+              <strong>Zdroje:</strong>
+              {entry.data.sources.map((source) => (
+                <span>
+                  {source.name}: {source.url}.{' '}
+                </span>
+              ))}
+            </p>
+          </article>
+        ))
+      }
+    </section>
+
+    <section class="print-part">
+      <h1>Rodinný plán</h1>
+      <PrintPlan client:load />
+      <p class="print-sources">
+        <strong>Zdroje:</strong>
+        {
+          plan.data.sources.map((source) => (
+            <span>
+              {source.name}: {source.url}.{' '}
+            </span>
+          ))
+        }
+      </p>
+    </section>
+
+    <section class="print-part">
+      <h1>Evakuační zavazadlo</h1>
+      <div class="print-prose" set:html={paperHtml(bag)} />
+      <p>Poslední kontrola: <strong data-bag-date>zatím bez kontroly</strong></p>
+      <div class="print-checklist" data-storage={BAG_CHECKLIST_KEY}>
+        {
+          bagList.data.groups.map((group) => (
+            <section class="print-group">
+              <h3>{group.title}</h3>
+              <ul>
+                {group.items.map((item) => (
+                  <li>
+                    <span class="print-box" data-key={`${group.id}/${item.id}`} />
+                    {item.text}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))
+        }
+      </div>
+      <p class="print-sources">
+        <strong>Zdroje:</strong>
+        {
+          bag.data.sources.map((source) => (
+            <span>
+              {source.name}: {source.url}.{' '}
+            </span>
+          ))
+        }
+      </p>
+    </section>
+
+    <section class="print-part">
+      <h1>Mapy</h1>
+      <div class="print-prose" set:html={paperHtml(maps)} />
+      <p class="print-sources">
+        <strong>Zdroje:</strong>
+        {
+          maps.data.sources.map((source) => (
+            <span>
+              {source.name}: {source.url}.{' '}
+            </span>
+          ))
+        }
+      </p>
+    </section>
+  </div>
+
+  <script>
+    import '../scripts/printBook';
+  </script>
+</Base>

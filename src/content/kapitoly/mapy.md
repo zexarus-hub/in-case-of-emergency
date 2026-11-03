@@ -26,5 +26,5 @@ Bez předplatného můžeš stáhnout mapu jednoho státu včetně jeho regionů
 
 1. Vyznač si na papírové mapě primární i záložní místo srazu.
 2. Vytiskni trasu autem i pěšky.
-3. Přidej vytištěný [Rodinný plán](../rodinny-plan/).
+3. Přidej [vytištěnou příručku](../tisk/) s rodinným plánem.
 4. Dej kopii každému členu rodiny.

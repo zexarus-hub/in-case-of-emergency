@@ -15,9 +15,7 @@ Rodinná offline aplikace (PWA) o tom, co mít připravené a co dělat, když n
 - Rodinný plán: kontakty, místa srazu, trasy, časová pravidla, vyzvedávání dětí a starších, klíč a zásoby. Jde vytisknout, i prázdný k vyplnění tužkou.
 - Export a import zálohy jako soubor JSON pro přenos mezi telefony.
 
-## Co se připravuje
-
-- Tisková verze celé příručky.
+- Tisk celé příručky včetně vyplněného plánu na stránce `/tisk/`, černobíle a bez navigace.
 
 ## Soukromí
 

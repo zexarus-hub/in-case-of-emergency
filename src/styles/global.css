@@ -1302,7 +1302,40 @@ a {
   margin-bottom: 0.25rem;
 }
 
+/* Stránka pro tisk: na obrazovce jen ovládání, na papíře celá příručka. */
+.print-book {
+  display: none;
+}
+
+.print-contents {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.print-all {
+  width: 100%;
+  margin-bottom: 0.75rem;
+}
+
+.print-hint {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.print-link {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
 /* Tisk: černobíle, bez navigace a ovládacích prvků. */
+@page {
+  margin: 15mm;
+
+  @bottom-center {
+    content: counter(page);
+  }
+}
+
 @media print {
   :root,
   :root[data-theme='light'] {
@@ -1318,11 +1351,17 @@ a {
     --on-accent: #ffffff;
     --danger: #000000;
     --on-danger: #ffffff;
+    --check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 13 4 4L19 7'/%3E%3C/svg%3E");
   }
 
   body {
     padding: 0;
-    font-size: 11pt;
+    font-size: 10.5pt;
+    line-height: 1.35;
+  }
+
+  a {
+    text-decoration: none;
   }
 
   .main-nav,
@@ -1330,6 +1369,15 @@ a {
   .segmented,
   .backup,
   .plan-form,
+  .button,
+  .chip-list,
+  .search-field,
+  .search-results,
+  .tile-grid,
+  .section-title,
+  .step-progress,
+  .progress,
+  .print-screen,
   .no-print {
     display: none !important;
   }
@@ -1339,19 +1387,355 @@ a {
     padding: 0;
   }
 
+  h1 {
+    margin: 0 0 3mm;
+    font-size: 20pt;
+    letter-spacing: 0;
+  }
+
+  /* Samostatně vytištěný plán: jen data, bez návodu na vyplnění. */
+  main:has(.plan-form) .prose,
+  main:has(.plan-form) .sources {
+    display: none;
+  }
+
+  /* Tisk jednotlivé kapitoly */
+  .prose h2 {
+    margin: 5mm 0 2mm;
+    font-size: 13pt;
+    break-after: avoid;
+  }
+
+  .prose h3 {
+    margin: 3mm 0 1mm;
+    font-size: 11pt;
+    break-after: avoid;
+  }
+
+  .prose ol {
+    gap: 1mm;
+    margin-bottom: 3mm;
+  }
+
+  .prose ol > li,
+  .prose ol.steps-on > li {
+    min-height: 0;
+    padding: 0 0 0 8mm;
+    border-radius: 0;
+    color: #000000;
+    text-decoration: none;
+    break-inside: avoid;
+  }
+
+  .prose ol > li::before {
+    top: 0;
+    left: 0;
+    width: 6mm;
+    height: 6mm;
+    border: 1px solid #000000;
+    background: none;
+    color: #000000;
+    font-size: 9pt;
+  }
+
+  .step-toggle,
+  .step-done .step-toggle {
+    width: 6mm;
+    min-height: 0;
+    height: 6mm;
+    padding: 0;
+    border: 1px solid #000000;
+    border-radius: 50%;
+    color: #000000;
+    font-size: 9pt;
+    line-height: 6mm;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .step-toggle::before {
+    content: none;
+  }
+
+  .prose blockquote {
+    margin: 2mm 0;
+    padding: 1.5mm 3mm;
+    border: 1px solid #000000;
+    border-left-width: 1mm;
+    border-radius: 0;
+    break-inside: avoid;
+  }
+
+  .jump-list,
+  .prose .link-list {
+    display: none;
+  }
+
+  .phone-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2mm 6mm;
+    margin-bottom: 3mm;
+  }
+
+  .phone-grid a,
+  .phone-grid a:first-child {
+    display: block;
+    min-height: 0;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    color: #000000;
+    font-size: 10.5pt;
+    font-weight: 400;
+  }
+
+  .phone-grid strong,
+  .phone-grid a:first-child strong {
+    margin-right: 1mm;
+    font-size: 13pt;
+  }
+
+  .card {
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .check-list {
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  .check-group {
+    break-inside: avoid;
+  }
+
+  .check-group h2 {
+    margin: 3mm 0 1mm;
+    font-size: 12pt;
+    break-after: avoid;
+  }
+
+  .check-list li + li {
+    border: 0;
+  }
+
+  .check-item {
+    min-height: 0;
+    padding: 0.5mm 0;
+    gap: 2mm;
+    font-size: 10pt;
+  }
+
+  .check-item input {
+    width: 4mm;
+    height: 4mm;
+    border: 1px solid #000000;
+    border-radius: 0;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .check-item:has(input:checked) .check-text {
+    color: #000000;
+    text-decoration: none;
+  }
+
+  .check-amount {
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .stepper {
+    margin-top: 0;
+  }
+
+  .sources {
+    margin-top: 5mm;
+    padding-top: 2mm;
+    font-size: 8.5pt;
+  }
+
+  .sources a::after {
+    content: ': ' attr(href);
+    overflow-wrap: anywhere;
+  }
+
+  /* Celá příručka */
+  .print-book {
+    display: block;
+  }
+
+  .print-cover {
+    text-align: left;
+  }
+
+  .print-cover h1 {
+    margin-top: 20mm;
+    font-size: 30pt;
+  }
+
+  .print-cover h2 {
+    margin: 10mm 0 2mm;
+    font-size: 14pt;
+  }
+
+  .print-numbers {
+    margin-top: 10mm;
+    padding: 4mm;
+    border: 2px solid #000000;
+  }
+
+  .print-numbers p {
+    margin: 1mm 0;
+    font-size: 13pt;
+  }
+
+  .print-numbers strong {
+    display: inline-block;
+    width: 16mm;
+    font-size: 16pt;
+  }
+
+  .print-part {
+    break-before: page;
+  }
+
+  .print-chapter {
+    margin-top: 5mm;
+  }
+
+  .print-chapter > h2 {
+    margin: 0 0 2mm;
+    padding-bottom: 1mm;
+    border-bottom: 1px solid #000000;
+    font-size: 14pt;
+    break-after: avoid;
+  }
+
+  .print-prose h3 {
+    margin: 3mm 0 1mm;
+    font-size: 11.5pt;
+    break-after: avoid;
+  }
+
+  .print-prose h4 {
+    margin: 2mm 0 1mm;
+    font-size: 10.5pt;
+    break-after: avoid;
+  }
+
+  .print-prose p {
+    margin: 0 0 1.5mm;
+  }
+
+  .print-prose ol,
+  .print-prose ul {
+    margin: 0 0 2mm;
+    padding-left: 6mm;
+  }
+
+  .print-prose li {
+    margin-bottom: 0.75mm;
+    break-inside: avoid;
+  }
+
+  .print-prose blockquote {
+    margin: 2mm 0;
+    padding: 1.5mm 3mm;
+    border: 1px solid #000000;
+    border-left-width: 1mm;
+    break-inside: avoid;
+  }
+
+  .print-prose blockquote p {
+    margin: 0;
+  }
+
+  .print-prose .phone-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2mm 6mm;
+    margin: 0 0 2mm;
+  }
+
+  .print-prose .phone-grid strong {
+    margin-right: 1mm;
+    font-size: 13pt;
+  }
+
+  .print-checklist {
+    columns: 2;
+    column-gap: 8mm;
+  }
+
+  .print-checklist > p {
+    margin: 0 0 2mm;
+  }
+
+  .print-group {
+    margin-bottom: 3mm;
+    break-inside: avoid;
+  }
+
+  .print-group h3 {
+    margin: 0 0 1mm;
+    font-size: 11pt;
+  }
+
+  .print-group ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .print-group li {
+    position: relative;
+    margin-bottom: 0.75mm;
+    padding-left: 6mm;
+    font-size: 9.5pt;
+  }
+
+  .print-group li strong {
+    margin-left: 1.5mm;
+  }
+
+  .print-box {
+    position: absolute;
+    top: 0.25mm;
+    left: 0;
+    width: 4mm;
+    height: 4mm;
+    border: 1px solid #000000;
+    font-size: 8pt;
+    font-weight: 700;
+    line-height: 4mm;
+    text-align: center;
+  }
+
+  .print-sources {
+    margin: 3mm 0 0;
+    font-size: 8pt;
+    overflow-wrap: anywhere;
+  }
+
+  .print-sources strong {
+    margin-right: 1mm;
+  }
+
   .plan-print {
     display: block;
   }
 
   .plan-print h2 {
-    margin: 1.25rem 0 0.5rem;
-    font-size: 14pt;
+    margin: 4mm 0 1.5mm;
+    font-size: 13pt;
     break-after: avoid;
   }
 
   .plan-print h3 {
-    margin: 0.5rem 0 0.25rem;
-    font-size: 11pt;
+    margin: 1.5mm 0 0.75mm;
+    font-size: 10.5pt;
     break-after: avoid;
   }
 
@@ -1384,6 +1768,6 @@ a {
   }
 
   .print-value-tall {
-    min-height: 6em;
+    min-height: 5em;
   }
 }
