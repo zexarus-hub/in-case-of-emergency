@@ -5,6 +5,7 @@ dev-dist/
 .astro/
 
 # Prostředí a lokální nastavení
+CLAUDE.md
 .env*
 .vscode/
 .idea/
