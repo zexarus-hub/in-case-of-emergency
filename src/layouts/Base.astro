@@ -44,6 +44,13 @@ const isSearch = Astro.url.pathname.startsWith(`${base}hledat`);
   </head>
   <body>
     <header class="app-header">
+      <a class="home-link" href={base} aria-label="Domů na úvodní obrazovku">
+        <svg viewBox="0 0 512 512" aria-hidden="true">
+          <rect width="512" height="512" fill="#000" />
+          <path d="M256 96 416 400H96z" fill="#ffd400" />
+          <path d="M240 192h32v112h-32zM240 328h32v32h-32z" fill="#000" />
+        </svg>
+      </a>
       {
         back ? (
           <a class="back-link" href={`${base}${back.href}`}>

@@ -27,8 +27,8 @@
   --tone-pot: #0f8038;
   --tone-soap: #007a8c;
   --tone-radio: #7128e0;
-  --radius: 1.25rem;
-  --nav-height: 5.25rem;
+  --radius: 1rem;
+  --nav-height: 4rem;
 }
 
 :root[data-theme='dark'] {
@@ -93,8 +93,8 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  font-size: 1.125rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.45;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -106,8 +106,8 @@ h3 {
 }
 
 h1 {
-  margin: 0.5rem 0 1rem;
-  font-size: min(2.25rem, 44px);
+  margin: 0.25rem 0 0.625rem;
+  font-size: min(1.625rem, 36px);
   font-weight: 800;
   letter-spacing: -0.03em;
 }
@@ -232,17 +232,22 @@ h1 {
   flex: none;
   align-items: center;
   justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 0.875rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.625rem;
   background: var(--tone);
   color: var(--on-tone);
+}
+
+.icon-chip .icon {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .chapter-title {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 a {
@@ -263,7 +268,7 @@ a {
 .page {
   max-width: 42rem;
   margin: 0 auto;
-  padding: 0.5rem min(1rem, 16px) 1rem;
+  padding: 0.25rem min(0.75rem, 12px) 0.75rem;
 }
 
 /* Záhlaví */
@@ -274,7 +279,23 @@ a {
   gap: 0.5rem;
   max-width: 42rem;
   margin: 0 auto;
-  padding: calc(8px + env(safe-area-inset-top)) min(1rem, 16px) 8px;
+  padding: calc(6px + env(safe-area-inset-top)) min(0.75rem, 12px) 4px;
+}
+
+.home-link {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: min(2.75rem, 52px);
+  height: min(2.75rem, 52px);
+  margin-left: -0.25rem;
+}
+
+.home-link svg {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
 }
 
 .search-pill {
@@ -283,13 +304,13 @@ a {
   align-items: center;
   gap: 8px;
   min-width: 0;
-  height: min(3rem, 56px);
-  padding: 0 min(1rem, 16px);
+  height: min(2.75rem, 52px);
+  padding: 0 min(0.875rem, 14px);
   overflow: hidden;
-  border-radius: 1.5rem;
+  border-radius: 1.375rem;
   background: var(--surface);
   color: var(--muted);
-  font-size: min(1.125rem, 18px);
+  font-size: min(1rem, 18px);
   font-weight: 500;
   text-decoration: none;
 }
@@ -299,11 +320,10 @@ a {
   flex: 0 1 auto;
   align-items: center;
   gap: 0.125rem;
-  min-width: 3rem;
-  min-height: min(3rem, 56px);
-  margin-left: -0.5rem;
+  min-width: 2.75rem;
+  min-height: min(2.75rem, 52px);
   overflow: hidden;
-  font-size: min(1.125rem, 18px);
+  font-size: min(1rem, 18px);
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
@@ -314,10 +334,31 @@ a {
   text-overflow: ellipsis;
 }
 
+/* Na nejužších telefonech se do záhlaví nevejde všechno. Odkaz zpět dál pozná čtečka podle textu. */
+@media (max-width: 359px) {
+  .back-link span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .search-pill {
+    padding: 0 8px;
+    font-size: 16px;
+  }
+
+  .search-pill .icon {
+    display: none;
+  }
+}
+
 .header-actions {
   display: flex;
   flex: none;
-  gap: 0.5rem;
+  gap: 0.375rem;
+  margin-left: auto;
 }
 
 .icon-button {
@@ -325,15 +366,15 @@ a {
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
-  min-width: min(3rem, 56px);
-  height: min(3rem, 56px);
-  padding: 0 min(0.75rem, 12px);
+  min-width: min(2.75rem, 52px);
+  height: min(2.75rem, 52px);
+  padding: 0 min(0.625rem, 10px);
   border: 0;
-  border-radius: 1.5rem;
+  border-radius: 1.375rem;
   background: var(--surface);
   color: var(--text);
   font: inherit;
-  font-size: min(1.125rem, 18px);
+  font-size: min(1rem, 18px);
   font-weight: 800;
   text-decoration: none;
   cursor: pointer;
@@ -366,7 +407,7 @@ a {
 .main-nav {
   position: fixed;
   right: 0.75rem;
-  bottom: calc(0.625rem + env(safe-area-inset-bottom));
+  bottom: calc(0.375rem + env(safe-area-inset-bottom));
   left: 0.75rem;
   z-index: 10;
   display: grid;
@@ -395,9 +436,9 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.0625rem;
+  gap: 0;
   min-width: 0;
-  min-height: min(3.5rem, 60px);
+  min-height: min(3rem, 56px);
   border-radius: 1.75rem;
   color: var(--muted);
   font-size: min(0.875rem, 16px);
@@ -410,16 +451,16 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: min(3.25rem, 56px);
-  height: min(1.875rem, 32px);
-  border-radius: 0.9375rem;
+  width: min(2.75rem, 48px);
+  height: min(1.5rem, 28px);
+  border-radius: 0.75rem;
   color: var(--tone);
 }
 
 /* Lišta a záhlaví s velikostí textu nerostou, aby zůstalo místo na obsah. */
 .nav-icon .icon {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
 }
 
 .main-nav a[aria-current='page'] {
@@ -437,9 +478,9 @@ a {
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
   gap: 0.25rem;
-  margin: 0.25rem 0 1rem;
-  padding: 0.25rem;
-  border-radius: 1.25rem;
+  margin: 0.125rem 0 0.625rem;
+  padding: 0.1875rem;
+  border-radius: 1rem;
   background: var(--surface);
 }
 
@@ -449,13 +490,13 @@ a {
   align-items: center;
   justify-content: center;
   min-width: 0;
-  min-height: min(3rem, 56px);
+  min-height: min(2.75rem, 52px);
   border: 0;
-  border-radius: 1rem;
+  border-radius: 0.8125rem;
   background: transparent;
   color: var(--muted);
   font: inherit;
-  font-size: min(1rem, 18px);
+  font-size: min(0.9375rem, 18px);
   line-height: 1.15;
   font-weight: 700;
   text-decoration: none;
@@ -472,8 +513,8 @@ a {
 .phone-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-  margin: 0 0 0.75rem;
+  gap: 0.375rem;
+  margin: 0 0 0.5rem;
 }
 
 .phone-grid a {
@@ -481,12 +522,13 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 4rem;
-  padding: 0.375rem 0.25rem;
+  min-height: 3rem;
+  padding: 0.25rem;
   overflow-wrap: anywhere;
   border-radius: var(--radius);
-  background: var(--tone);
-  color: var(--on-tone);
+  background: var(--surface);
+  background: color-mix(in srgb, var(--tone) 50%, transparent);
+  color: var(--text);
   font-size: min(0.875rem, 18px);
   line-height: 1.2;
   text-align: center;
@@ -506,7 +548,7 @@ a {
 }
 
 .phone-grid strong {
-  font-size: min(1.5rem, 30px);
+  font-size: min(1.25rem, 26px);
   font-weight: 800;
 }
 
@@ -516,12 +558,12 @@ a {
   gap: 0.75rem;
   background: var(--danger);
   color: var(--on-danger);
-  font-size: 1.25rem;
+  font-size: 1.0625rem;
   font-weight: 700;
 }
 
 .phone-grid a:first-child strong {
-  font-size: 2.25rem;
+  font-size: 1.625rem;
 }
 
 .phone-grid a:nth-child(2):last-child {
@@ -530,61 +572,37 @@ a {
 
 /* Rozcestníky */
 .section-title {
-  margin: 1rem 0 0.5rem;
-  font-size: 1.25rem;
+  margin: 0.75rem 0 0.375rem;
+  font-size: 1.0625rem;
   font-weight: 800;
 }
 
 .tile-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.5rem), 1fr));
-  gap: 0.5rem;
+  gap: 0.375rem;
 }
 
 .tile {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 0.75rem;
+  align-items: center;
+  gap: 0.5rem;
   min-width: 0;
-  min-height: 7.25rem;
-  padding: 0.875rem;
+  min-height: 3.25rem;
+  padding: 0.5rem;
+  font-size: 0.9375rem;
   border-radius: var(--radius);
-  background: var(--tone);
-  color: var(--on-tone);
+  background: var(--surface);
+  background: color-mix(in srgb, var(--tone) 50%, transparent);
+  color: var(--text);
   font-weight: 700;
   line-height: 1.2;
   text-decoration: none;
 }
 
-.tile .icon-chip {
-  background: rgb(255 255 255 / 25%);
-  color: inherit;
-}
-
-/* Tmavý režim šetří baterii: velké plochy jsou syté, ale tmavé, a září jen ikona. */
-@media screen {
-  :root[data-theme='dark'] .tile,
-  :root[data-theme='dark'] .phone-grid a:not(:first-child) {
-    background: var(--surface-2);
-    background: color-mix(in srgb, var(--tone) 30%, #000000);
-    color: #ffffff;
-  }
-
-  :root[data-theme='dark'] .tile .icon-chip {
-    background: var(--tone);
-    color: var(--on-tone);
-  }
-}
-
 .tile-wide {
   grid-column: 1 / -1;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 3.75rem;
-  padding-block: 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .tile .tile-chevron {
@@ -595,14 +613,14 @@ a {
 .meet-card {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  min-height: 3.5rem;
-  margin-bottom: 0.5rem;
-  padding: 0.5rem 1rem;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  margin-bottom: 0.375rem;
+  padding: 0.375rem 0.75rem;
   border-radius: var(--radius);
   background: var(--accent);
   color: var(--on-accent);
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 800;
   line-height: 1.2;
   overflow-wrap: anywhere;
@@ -623,16 +641,16 @@ a {
 .stat-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 5.25rem), 1fr));
-  gap: 0.5rem;
+  gap: 0.375rem;
 }
 
 .stat {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.125rem;
   min-width: 0;
-  min-height: 6rem;
-  padding: 0.75rem;
+  min-height: 4.25rem;
+  padding: 0.5rem 0.625rem;
   border-radius: var(--radius);
   background: var(--surface);
   background: color-mix(in srgb, var(--tone) 14%, var(--bg));
@@ -652,7 +670,7 @@ a {
 
 .stat strong {
   flex: 1;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 800;
 }
 
@@ -665,11 +683,11 @@ a {
 .search-field {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
-  min-height: 3.5rem;
-  margin-bottom: 0.75rem;
-  padding: 0 1rem;
-  border-radius: 1.75rem;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  margin-bottom: 0.5rem;
+  padding: 0 0.875rem;
+  border-radius: 1.375rem;
   background: var(--surface);
   color: var(--muted);
 }
@@ -682,7 +700,7 @@ a {
 .search-field input {
   flex: 1;
   min-width: 0;
-  min-height: 3.5rem;
+  min-height: 2.75rem;
   border: 0;
   outline: 0;
   background: transparent;
@@ -699,25 +717,25 @@ a {
 .chip-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.375rem;
 }
 
 .chip {
-  min-height: 3rem;
-  padding: 0 1rem;
+  min-height: 2.75rem;
+  padding: 0 0.875rem;
   border: 0;
-  border-radius: 1.5rem;
+  border-radius: 1.375rem;
   background: var(--surface);
   color: var(--text);
   font: inherit;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   cursor: pointer;
 }
 
 .search-results {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.375rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -725,7 +743,7 @@ a {
 
 .search-result {
   display: block;
-  padding: 0.875rem 1rem;
+  padding: 0.5rem 0.75rem;
   border-radius: var(--radius);
   background: var(--surface);
   line-height: 1.3;
@@ -741,19 +759,19 @@ a {
 
 .search-result strong {
   display: block;
-  margin-bottom: 0.25rem;
-  font-size: 1.125rem;
+  margin-bottom: 0.125rem;
+  font-size: 1rem;
 }
 
 .search-result span {
   display: block;
   color: var(--muted);
-  font-size: 1rem;
+  font-size: 0.9375rem;
 }
 
 .link-list {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.375rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -762,8 +780,8 @@ a {
 .link-list a {
   display: flex;
   align-items: center;
-  min-height: 3.5rem;
-  padding: 0.5rem 1rem;
+  min-height: 2.75rem;
+  padding: 0.375rem 0.75rem;
   border-radius: var(--radius);
   background: var(--surface);
   font-weight: 700;
@@ -771,8 +789,8 @@ a {
 }
 
 .link-list .row-link {
-  gap: 0.875rem;
-  min-height: 5rem;
+  gap: 0.625rem;
+  min-height: 3.25rem;
   background: color-mix(in srgb, var(--tone) 12%, var(--bg));
 }
 
@@ -784,9 +802,8 @@ a {
 
 .row-text small {
   display: block;
-  margin-top: 0.125rem;
   color: var(--muted);
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: 400;
 }
 
@@ -796,23 +813,23 @@ a {
 
 /* Text kapitol */
 .prose h2 {
-  margin: 2rem 0 0.75rem;
-  padding-left: 0.625rem;
-  border-left: 0.375rem solid var(--tone);
-  font-size: 1.5rem;
+  margin: 1.125rem 0 0.5rem;
+  padding-left: 0.5rem;
+  border-left: 0.25rem solid var(--tone);
+  font-size: 1.1875rem;
   font-weight: 800;
   scroll-margin-top: 1rem;
 }
 
 .prose h3 {
-  margin: 1.5rem 0 0.5rem;
-  font-size: 1.1875rem;
+  margin: 0.875rem 0 0.375rem;
+  font-size: 1.0625rem;
   font-weight: 700;
   scroll-margin-top: 1rem;
 }
 
 .prose p {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.5rem;
 }
 
 .prose a:not([href^='tel:']) {
@@ -821,8 +838,8 @@ a {
 
 .prose ol {
   display: grid;
-  gap: 0.5rem;
-  margin: 0 0 1rem;
+  gap: 0.25rem;
+  margin: 0 0 0.75rem;
   padding: 0;
   list-style: none;
   counter-reset: step;
@@ -830,8 +847,8 @@ a {
 
 .prose ol > li {
   position: relative;
-  min-height: 3.5rem;
-  padding: 0.75rem 1rem 0.75rem 3.5rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem 0.5rem 2.75rem;
   border-radius: var(--radius);
   background: var(--surface);
   background: color-mix(in srgb, var(--tone) 12%, var(--bg));
@@ -840,17 +857,17 @@ a {
 
 .prose ol > li::before {
   position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
+  top: 0.5625rem;
+  left: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 1.625rem;
+  height: 1.625rem;
   border-radius: 50%;
   background: var(--tone);
   color: var(--on-tone);
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 800;
   content: counter(step);
 }
@@ -863,10 +880,10 @@ a {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
-  gap: 0.25rem 0.75rem;
-  min-height: 3.5rem;
-  margin: 0 0 0.75rem;
-  padding: 0.5rem 1rem;
+  gap: 0.125rem 0.75rem;
+  min-height: 2.75rem;
+  margin: 0 0 0.5rem;
+  padding: 0.25rem 0.75rem 0.5rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
@@ -879,7 +896,7 @@ a {
 }
 
 .step-reset {
-  min-height: 3rem;
+  min-height: 2.75rem;
   padding: 0 0 0 0.75rem;
   border: 0;
   background: transparent;
@@ -906,29 +923,29 @@ a {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  width: 3.5rem;
-  min-height: 3.5rem;
+  width: 2.75rem;
+  min-height: 2.75rem;
   height: 100%;
-  padding: 0.75rem 0 0;
+  padding: 0.5625rem 0 0;
   border: 0;
   border-radius: var(--radius) 0 0 var(--radius);
   background: transparent;
   color: var(--on-tone);
   font: inherit;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 800;
-  line-height: 2rem;
+  line-height: 1.625rem;
   cursor: pointer;
   isolation: isolate;
 }
 
 .step-toggle::before {
   position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
+  top: 0.5625rem;
+  left: 0.5rem;
   z-index: -1;
-  width: 2rem;
-  height: 2rem;
+  width: 1.625rem;
+  height: 1.625rem;
   border-radius: 50%;
   background: var(--tone);
   content: '';
@@ -953,18 +970,18 @@ a {
 }
 
 .prose ul:not(.link-list) {
-  margin: 0 0 1rem;
-  padding-left: 1.5rem;
+  margin: 0 0 0.75rem;
+  padding-left: 1.25rem;
 }
 
 .prose ul:not(.link-list) > li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .prose blockquote {
-  margin: 1rem 0;
-  padding: 0.75rem 1rem;
-  border-left: 0.375rem solid var(--tone);
+  margin: 0.625rem 0;
+  padding: 0.5rem 0.75rem;
+  border-left: 0.25rem solid var(--tone);
   border-radius: 0.5rem;
   background: var(--surface);
   background: color-mix(in srgb, var(--tone) 18%, var(--bg));
@@ -976,54 +993,54 @@ a {
 
 .jump-list {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.5rem), 1fr));
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.875rem;
 }
 
 .jump-list a {
   height: 100%;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   line-height: 1.2;
 }
 
 /* Karty a ovládací prvky */
 .card {
-  margin: 0 0 1rem;
-  padding: 1rem;
+  margin: 0 0 0.625rem;
+  padding: 0.75rem;
   border-radius: var(--radius);
   background: var(--surface);
 }
 
 .card-label {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.375rem;
   color: var(--muted);
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0;
 }
 
 .card-note {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.5rem;
   color: var(--muted);
-  font-size: 1rem;
+  font-size: 0.9375rem;
 }
 
 .card-notes {
-  margin: 0 0 1rem;
-  padding-left: 1.25rem;
-  font-size: 1rem;
+  margin: 0 0 0.625rem;
+  padding-left: 1.125rem;
+  font-size: 0.9375rem;
 }
 
 .card-notes li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 3.5rem;
-  min-height: 3.5rem;
-  padding: 0.5rem 1rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.375rem 0.875rem;
   border: 0;
   border-radius: var(--radius);
   background: var(--surface-2);
@@ -1047,7 +1064,7 @@ a {
 .button-quiet {
   background: transparent;
   color: var(--muted);
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 600;
 }
 
@@ -1066,9 +1083,9 @@ a {
 }
 
 .notice {
-  margin: 1rem 0;
-  padding: 0.75rem 1rem;
-  border-left: 0.375rem solid var(--accent);
+  margin: 0.625rem 0;
+  padding: 0.5rem 0.75rem;
+  border-left: 0.25rem solid var(--accent);
   border-radius: 0.5rem;
   background: var(--bg);
 }
@@ -1085,7 +1102,7 @@ a {
 
 .check-total {
   color: var(--text);
-  font-size: 1.5rem;
+  font-size: 1.1875rem;
   font-weight: 800;
 }
 
@@ -1106,8 +1123,8 @@ a {
 .stepper {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  gap: 0.375rem;
+  margin-top: 0.5rem;
 }
 
 .stepper-label {
@@ -1118,13 +1135,13 @@ a {
 .stepper .button {
   padding: 0;
   border-radius: 50%;
-  font-size: 1.75rem;
+  font-size: 1.375rem;
   line-height: 1;
 }
 
 .stepper-value {
-  min-width: 2.5rem;
-  font-size: 1.5rem;
+  min-width: 2rem;
+  font-size: 1.1875rem;
   font-weight: 800;
   text-align: center;
 }
@@ -1155,17 +1172,17 @@ a {
   align-items: baseline;
   justify-content: space-between;
   gap: 0.75rem;
-  margin: 1.5rem 0 0.5rem;
-  padding-left: 0.625rem;
-  border-left: 0.375rem solid var(--tone);
-  font-size: 1.375rem;
+  margin: 0.875rem 0 0.375rem;
+  padding-left: 0.5rem;
+  border-left: 0.25rem solid var(--tone);
+  font-size: 1.125rem;
   font-weight: 800;
 }
 
 .check-count {
   flex: none;
   color: var(--muted);
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 
@@ -1186,20 +1203,20 @@ a {
 .check-item {
   display: flex;
   align-items: center;
-  gap: 0.875rem;
-  min-height: 3.5rem;
-  padding: 0.625rem 1rem;
-  line-height: 1.3;
+  gap: 0.625rem;
+  min-height: 2.75rem;
+  padding: 0.375rem 0.75rem;
+  line-height: 1.25;
   cursor: pointer;
 }
 
 .check-item input {
   flex: none;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1.375rem;
+  height: 1.375rem;
   margin: 0;
   border: 2px solid var(--border);
-  border-radius: 0.5rem;
+  border-radius: 0.375rem;
   background: transparent;
   appearance: none;
   -webkit-appearance: none;
@@ -1231,8 +1248,8 @@ a {
 }
 
 .bag-check-date {
-  margin: 0 0 0.5rem;
-  font-size: 1.375rem;
+  margin: 0 0 0.375rem;
+  font-size: 1.125rem;
   font-weight: 800;
   line-height: 1.2;
 }
@@ -1243,7 +1260,7 @@ a {
 }
 
 .backup {
-  margin-top: 2rem;
+  margin-top: 1.25rem;
 }
 
 .backup .notice p {
@@ -1252,7 +1269,7 @@ a {
 
 .backup-actions {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.375rem;
 }
 
 /* Rodinný plán */
@@ -1261,9 +1278,9 @@ a {
 }
 
 .plan-hint {
-  margin: 0 0 1rem;
+  margin: 0 0 0.625rem;
   color: var(--muted);
-  font-size: 1rem;
+  font-size: 0.9375rem;
 }
 
 .plan-view section h2 {
@@ -1271,8 +1288,8 @@ a {
 }
 
 .plan-place {
-  margin: 0 0 0.75rem;
-  font-size: 1.5rem;
+  margin: 0 0 0.5rem;
+  font-size: 1.1875rem;
   font-weight: 800;
   line-height: 1.2;
   overflow-wrap: anywhere;
@@ -1326,10 +1343,10 @@ a {
 
 .plan-form fieldset {
   display: grid;
-  gap: 0.75rem;
+  gap: 0.5rem;
   min-width: 0;
-  margin: 0 0 1rem;
-  padding: 1rem;
+  margin: 0 0 0.625rem;
+  padding: 0.75rem;
   border: 0;
   border-radius: var(--radius);
   background: var(--surface);
@@ -1338,9 +1355,9 @@ a {
 .plan-form legend {
   float: left;
   width: 100%;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   padding: 0;
-  font-size: 1.25rem;
+  font-size: 1.0625rem;
   font-weight: 800;
 }
 
@@ -1350,22 +1367,22 @@ a {
 
 .plan-form label {
   display: grid;
-  gap: 0.25rem;
-  font-size: 1rem;
+  gap: 0.125rem;
+  font-size: 0.9375rem;
   font-weight: 600;
 }
 
 .plan-form input,
 .plan-form textarea {
   width: 100%;
-  min-height: 3.5rem;
-  padding: 0.5rem 0.75rem;
+  min-height: 2.75rem;
+  padding: 0.375rem 0.625rem;
   border: 1px solid var(--border);
-  border-radius: 0.75rem;
+  border-radius: 0.625rem;
   background: var(--bg);
   color: var(--text);
   font: inherit;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 400;
 }
 
@@ -1380,7 +1397,7 @@ a {
 
 .plan-row {
   display: grid;
-  gap: 0.75rem;
+  gap: 0.5rem;
   padding-bottom: 0.25rem;
   border-bottom: 1px solid var(--line);
 }
@@ -1394,11 +1411,11 @@ a {
 }
 
 .sources {
-  margin-top: 2rem;
-  padding-top: 0.75rem;
+  margin-top: 1.25rem;
+  padding-top: 0.5rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
 }
 
 .sources ul {
@@ -1427,12 +1444,12 @@ a {
 
 .print-hint {
   color: var(--muted);
-  font-size: 1rem;
+  font-size: 0.9375rem;
 }
 
 .print-link {
   width: 100%;
-  margin-top: 0.5rem;
+  margin-top: 0.375rem;
 }
 
 /* Tisk: černobíle, bez navigace a ovládacích prvků. */
