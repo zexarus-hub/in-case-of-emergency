@@ -14,8 +14,10 @@ const navody = (await getCollection('kapitoly', ({ id }) => id.startsWith('navod
     {
       navody.map((entry) => (
         <li>
-          <a class="row-link" href={`${import.meta.env.BASE_URL}${entry.id}/`}>
-            <Icon name={entry.data.icon as 'bolt'} class="row-icon" />
+          <a class="row-link" data-tone={entry.data.icon} href={`${import.meta.env.BASE_URL}${entry.id}/`}>
+            <span class="icon-chip">
+              <Icon name={entry.data.icon as 'bolt'} />
+            </span>
             <span class="row-text">
               {entry.data.title}
               <small>{entry.data.description}</small>

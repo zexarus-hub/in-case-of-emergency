@@ -8,6 +8,8 @@ const entry = (await getEntry('kapitoly', 'rychla-pomoc'))!;
 const situace = (await getCollection('kapitoly', ({ id }) => id.startsWith('situace/'))).sort(
   (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0),
 );
+const supplies = (await getEntry('checklisty', 'pripav-se'))!;
+const supplyKeys = supplies.data.groups.flatMap((group) => group.items.map((item) => `${group.id}/${item.id}`));
 const base = import.meta.env.BASE_URL;
 const numbers = [
   { number: '155', label: 'Záchranka' },
@@ -30,22 +32,54 @@ const numbers = [
           ))
         }
       </div>
+      <a class="meet-card no-print" href={`${base}rodinny-plan/`} data-meet hidden>
+        <Icon name="pin" />
+        <span class="row-text">
+          <small>Místo srazu</small>
+          <span data-meet-place></span>
+        </span>
+        <Icon name="chevron" class="row-chevron" />
+      </a>
       <h2 class="section-title">Co se děje?</h2>
       <div class="tile-grid">
-        <a class="tile tile-wide tile-urgent" href={`${base}navody/prvni-pomoc/`}>
-          <Icon name="heart" />
+        <a class="tile tile-wide" data-tone="heart" href={`${base}navody/prvni-pomoc/`}>
+          <span class="icon-chip"><Icon name="heart" /></span>
           První pomoc
           <Icon name="chevron" class="tile-chevron" />
         </a>
         {
           situace.map((item) => (
-            <a class="tile" href={`${base}${item.id}/`}>
-              <Icon name={item.data.icon as 'bolt'} />
+            <a class="tile" data-tone={item.data.icon} href={`${base}${item.id}/`}>
+              <span class="icon-chip">
+                <Icon name={item.data.icon as 'bolt'} />
+              </span>
               {item.data.title}
             </a>
           ))
         }
       </div>
+      <section class="readiness no-print" data-readiness data-supplies={JSON.stringify(supplyKeys)} hidden>
+        <h2 class="section-title">Tvoje příprava</h2>
+        <div class="stat-grid">
+          <a class="stat" href={`${base}pripav-se/`}>
+            <small>Zásoby</small>
+            <strong data-stat="supplies"></strong>
+            <span class="progress"><span data-bar="supplies"></span></span>
+          </a>
+          <a class="stat" href={`${base}rodinny-plan/`}>
+            <small>Plán</small>
+            <strong data-stat="plan"></strong>
+            <span class="progress"><span data-bar="plan"></span></span>
+          </a>
+          <a class="stat" href={`${base}evakuacni-zavazadlo/`}>
+            <small>Zavazadlo</small>
+            <strong data-stat="bag"></strong>
+          </a>
+        </div>
+      </section>
     </Fragment>
   </Chapter>
+  <script>
+    import '../scripts/home';
+  </script>
 </Base>

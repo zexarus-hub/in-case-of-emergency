@@ -8,7 +8,8 @@ Rodinná offline aplikace (PWA) o tom, co mít připravené a co dělat, když n
 
 - Navigace mezi kapitolami, tmavý režim s čistou černou a volitelný světlý režim.
 - Offline provoz přes service worker, který při instalaci uloží všechny stránky a assety.
-- Rychlá pomoc podle situace, návody a checklist zásob s přepočtem množství podle počtu osob.
+- Rychlá pomoc podle situace s odškrtáváním kroků, návody a checklist zásob s přepočtem množství podle počtu osob.
+- Hledání v celé příručce, které funguje offline a nevadí mu chybějící diakritika.
 - Evakuační zavazadlo s datem poslední kontroly.
 - Návod na stažení offline map v Mapy.com.
 - Rodinný plán: kontakty, místa srazu, trasy, časová pravidla, vyzvedávání dětí a starších, klíč a zásoby. Jde vytisknout, i prázdný k vyplnění tužkou.

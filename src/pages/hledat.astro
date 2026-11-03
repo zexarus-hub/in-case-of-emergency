@@ -1,0 +1,67 @@
+---
+import { getCollection, render } from 'astro:content';
+import Icon from '../components/Icon.astro';
+import Base from '../layouts/Base.astro';
+import type { SearchEntry } from '../lib/search';
+
+const base = import.meta.env.BASE_URL;
+
+function plainText(markdown: string): string {
+  return markdown
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/^\s*(>|#+|\d+\.|-)\s*/gm, '')
+    .replace(/\*\*/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+const pageUrl = (id: string) => `${base}${id === 'rychla-pomoc' ? '' : `${id}/`}`;
+
+// Hledá se po částech kapitol, aby výsledek vedl přímo na správný nadpis.
+const index: SearchEntry[] = [];
+for (const entry of await getCollection('kapitoly')) {
+  const { headings } = await render(entry);
+  const parts = (entry.body ?? '').split(/^## (.+)$/m);
+  const page = entry.data.title;
+  const intro = plainText(parts[0]);
+  if (intro) index.push({ title: page, page, url: pageUrl(entry.id), text: intro });
+  for (let i = 1; i < parts.length; i += 2) {
+    const slug = headings.find((heading) => heading.depth === 2 && heading.text === parts[i])?.slug;
+    index.push({ title: parts[i], page, url: `${pageUrl(entry.id)}${slug ? `#${slug}` : ''}`, text: plainText(parts[i + 1]) });
+  }
+}
+
+const checklistPages: Record<string, string> = { 'pripav-se': 'Zásoby', 'evakuacni-zavazadlo': 'Evakuační zavazadlo' };
+for (const checklist of await getCollection('checklisty')) {
+  for (const group of checklist.data.groups) {
+    index.push({
+      title: group.title,
+      page: checklistPages[checklist.id],
+      url: pageUrl(checklist.id),
+      text: group.items.map((item) => item.text).join(', '),
+    });
+  }
+}
+
+const hints = ['Krvácení', 'Popáleniny', 'Oxid uhelnatý', 'Převaření', 'Evakuace', 'Toaleta'];
+const data = JSON.stringify(index).replace(/</g, '\\u003c');
+---
+
+<Base title="Hledat" back={{ href: '', label: 'Pomoc' }}>
+  <h1>Hledat</h1>
+  <label class="search-field">
+    <Icon name="search" />
+    <span class="visually-hidden">Hledat v příručce</span>
+    <input type="search" enterkeyhint="search" autocomplete="off" placeholder="Co potřebuješ najít?" autofocus data-search-input />
+  </label>
+  <div class="chip-list" data-search-hints>
+    {hints.map((hint) => <button type="button" class="chip">{hint}</button>)}
+  </div>
+  <p class="card" data-search-empty hidden>Nic jsme nenašli. Zkus jiné slovo. Když jde o život, volej 155.</p>
+  <ul class="search-results" data-search-results></ul>
+  <script type="application/json" id="search-data" set:html={data} />
+  <script>
+    import '../scripts/search';
+  </script>
+</Base>

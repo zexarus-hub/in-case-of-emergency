@@ -20,4 +20,7 @@ const { entry } = Astro.props;
 
 <Base title={entry.data.title} back={{ href: '', label: 'Pomoc' }}>
   <Chapter entry={entry} />
+  <script>
+    import '../../scripts/steps';
+  </script>
 </Base>

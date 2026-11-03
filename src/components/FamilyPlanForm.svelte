@@ -5,17 +5,19 @@
     emptyContact,
     emptyFamilyPlan,
     emptyPickup,
+    filledSections,
+    hasText,
     loadFamilyPlan,
+    PLAN_SECTION_COUNT,
     saveFamilyPlan,
+    usedRows,
     type Contact,
-    type FamilyPlan,
     type Pickup,
   } from '../lib/familyPlan';
 
   // Na papíře zůstanou volné řádky, aby šlo plán doplnit tužkou.
   const PRINT_CONTACT_ROWS = 6;
   const PRINT_PICKUP_ROWS = 4;
-  const SECTION_COUNT = 6;
 
   let plan = $state(emptyFamilyPlan());
   let mode = $state<'view' | 'edit'>('edit');
@@ -46,23 +48,9 @@
     save();
   }
 
-  const hasText = (...values: string[]) => values.some((value) => value.trim() !== '');
-  const usedRows = <T extends Contact | Pickup>(rows: T[]) => rows.filter((row) => hasText(...Object.values(row)));
-
   function filled<T extends Contact | Pickup>(rows: T[], minRows: number, empty: () => T): T[] {
     const used = usedRows(rows);
     return [...used, ...Array.from({ length: Math.max(0, minRows - used.length) }, empty)];
-  }
-
-  function filledSections(current: FamilyPlan): number {
-    return [
-      usedRows(current.contacts).length > 0,
-      hasText(current.primaryPlace, current.backupPlace),
-      hasText(current.routeCar, current.routeFoot),
-      hasText(current.timeRules),
-      usedRows(current.pickups).length > 0,
-      hasText(current.keyLocation, current.suppliesLocation),
-    ].filter(Boolean).length;
   }
 
   const phoneHref = (phone: string) => `tel:${phone.replace(/[^\d+]/g, '')}`;
@@ -96,7 +84,7 @@
     <button type="button" aria-pressed={mode === 'view'} onclick={() => (mode = 'view')}>Zobrazit</button>
     <button type="button" aria-pressed={mode === 'edit'} onclick={() => (mode = 'edit')}>Upravit</button>
   </div>
-  <p class="plan-hint">Vyplněno {sections} z {SECTION_COUNT} částí. Ukládá se automaticky jen v tomto telefonu.</p>
+  <p class="plan-hint">Vyplněno {sections} z {PLAN_SECTION_COUNT} částí. Ukládá se automaticky jen v tomto telefonu.</p>
 </div>
 
 <div class="plan-view no-print" hidden={mode !== 'view'}>

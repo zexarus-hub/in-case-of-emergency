@@ -66,3 +66,18 @@ export function loadFamilyPlan(): FamilyPlan {
 export function saveFamilyPlan(plan: FamilyPlan): boolean {
   return writeItem(FAMILY_PLAN_KEY, JSON.stringify(plan));
 }
+
+export const PLAN_SECTION_COUNT = 6;
+export const hasText = (...values: string[]) => values.some((value) => value.trim() !== '');
+export const usedRows = <T extends Contact | Pickup>(rows: T[]) => rows.filter((row) => hasText(...Object.values(row)));
+
+export function filledSections(plan: FamilyPlan): number {
+  return [
+    usedRows(plan.contacts).length > 0,
+    hasText(plan.primaryPlace, plan.backupPlace),
+    hasText(plan.routeCar, plan.routeFoot),
+    hasText(plan.timeRules),
+    usedRows(plan.pickups).length > 0,
+    hasText(plan.keyLocation, plan.suppliesLocation),
+  ].filter(Boolean).length;
+}
