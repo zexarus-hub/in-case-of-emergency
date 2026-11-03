@@ -61,31 +61,23 @@ const numbers = [
       <section class="readiness no-print" data-readiness data-supplies={JSON.stringify(supplyKeys)} hidden>
         <h2 class="section-title">Tvoje příprava</h2>
         <div class="stat-grid">
-          <a class="stat" href={`${base}pripav-se/`}>
+          <a class="stat" data-tone="pot" href={`${base}pripav-se/`}>
             <small>Zásoby</small>
             <strong data-stat="supplies"></strong>
             <span class="progress"><span data-bar="supplies"></span></span>
           </a>
-          <a class="stat" href={`${base}rodinny-plan/`}>
+          <a class="stat" data-tone="users" href={`${base}rodinny-plan/`}>
             <small>Plán</small>
             <strong data-stat="plan"></strong>
             <span class="progress"><span data-bar="plan"></span></span>
           </a>
-          <a class="stat" href={`${base}evakuacni-zavazadlo/`}>
+          <a class="stat" data-tone="exit" href={`${base}evakuacni-zavazadlo/`}>
             <small>Zavazadlo</small>
             <strong data-stat="bag"></strong>
           </a>
         </div>
       </section>
       <a class="button print-link no-print" href={`${base}tisk/`}>Vytisknout příručku</a>
-      <section class="text-size no-print" data-text-size-control hidden>
-        <h2 class="section-title">Velikost textu</h2>
-        <div class="segmented" role="group" aria-label="Velikost textu">
-          <button type="button" data-size="100">Normální</button>
-          <button type="button" data-size="120">Větší</button>
-          <button type="button" data-size="150">Největší</button>
-        </div>
-      </section>
     </Fragment>
   </Chapter>
   <script>

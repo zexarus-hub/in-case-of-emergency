@@ -1,5 +1,6 @@
 ---
 import { render, type CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
 
 interface Props {
   entry: CollectionEntry<'kapitoly'>;
@@ -9,9 +10,18 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<h1>{entry.data.title}</h1>
+<h1 class="chapter-title" data-tone={entry.data.icon}>
+  {
+    entry.data.icon && (
+      <span class="icon-chip">
+        <Icon name={entry.data.icon as 'bolt'} />
+      </span>
+    )
+  }
+  {entry.data.title}
+</h1>
 <slot name="top" />
-<div class="prose">
+<div class="prose" data-tone={entry.data.icon}>
   <Content />
 </div>
 <slot />

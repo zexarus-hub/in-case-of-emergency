@@ -6,7 +6,7 @@ Rodinná offline aplikace (PWA) o tom, co mít připravené a co dělat, když n
 
 ## Co už funguje
 
-- Navigace mezi kapitolami, tmavý režim s čistou černou a volitelný světlý režim.
+- Navigace mezi kapitolami, barevný světlý režim jako výchozí a volitelný tmavý režim s čistou černou.
 - Offline provoz přes service worker, který při instalaci uloží všechny stránky a assety.
 - Rychlá pomoc podle situace s odškrtáváním kroků, návody a checklist zásob s přepočtem množství podle počtu osob.
 - Hledání v celé příručce, které funguje offline a nevadí mu chybějící diakritika.

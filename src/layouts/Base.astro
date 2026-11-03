@@ -36,8 +36,6 @@ const isSearch = Astro.url.pathname.startsWith(`${base}hledat`);
           document.documentElement.dataset.theme = 'dark';
           document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
         }
-        var textSize = localStorage.getItem('text-size');
-        if (textSize === '120' || textSize === '150') document.documentElement.dataset.textSize = textSize;
       } catch {}
     </script>
     <script is:inline define:vars={{ swUrl }}>
