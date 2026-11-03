@@ -8,6 +8,12 @@ sources:
     url: "https://www.72h.gov.cz/public/files/2025-09/72-hodin-Jak-se-pripravit-na-krizove-situace-a-spolecne-je-zvladnout_.pdf"
   - name: "Ministerstvo vnitra: Informace a komunikace"
     url: "https://www.72h.gov.cz/cs/informace-komunikace"
+  - name: "HZS ČR: Den tísňové linky 112"
+    url: "https://archiv.hzscr.gov.cz/clanek/menu-informacni-servis-zpravodajstvi-2019-unor-den-tisnove-linky-112.aspx"
+  - name: "Český červený kříž: Zvládneš to, krizová připravenost"
+    url: "https://zvladnesto.cervenykriz.eu/krizova-pripravenost/"
+  - name: "Ministerstvo vnitra: Karta pro starosty, narušení dodávek elektřiny"
+    url: "https://www.72h.gov.cz/public/files/2025-09/KPS-Naruseni-dodavek-elektriny-v1.1.pdf"
   - name: "Ministerstvo vnitra: Důležité kontakty"
     url: "https://www.72h.gov.cz/cs/dulezite-kontakty"
 ---
@@ -41,4 +47,8 @@ Ověřuj zprávy z několika důvěryhodných zdrojů. Sdílej jen to, o čem v�
 - Pomoc přivoláš SMS zprávou na kteroukoli tísňovou linku nebo aplikací Záchranka.
 - Nevíš, kde přesně jsi? Řekni číslo z lampy veřejného osvětlení nebo ze železničního přejezdu. Popiš, co vidíš kolem sebe.
 
-> Jak přivolat pomoc, když nefunguje žádná síť: TODO: ověřit
+- Tísňovou linku 112 můžeš volat bez SIM karty a bez kreditu. Stačí signál aspoň jednoho operátora.
+- Máš potíže se SIM kartou nebo signálem? Vyjmi SIM kartu a volej bez ní.
+- Tísňové linky volej jen při ohrožení života, ne kvůli informacím.
+
+> **Když nefunguje žádná síť:** Oficiální zdroje pro tento případ postup neuvádějí. Sleduj obecní rozhlas a rádio. Pomoc v obci organizuje starosta a krizový štáb. Domluvte se proto předem podle rodinného plánu.

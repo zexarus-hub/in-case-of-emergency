@@ -6,6 +6,8 @@ description: "Jídlo bez vaření, vařič a lednice"
 sources:
   - name: "Ministerstvo vnitra: příručka 72 hodin (2025)"
     url: "https://www.72h.gov.cz/public/files/2025-09/72-hodin-Jak-se-pripravit-na-krizove-situace-a-spolecne-je-zvladnout_.pdf"
+  - name: "Český červený kříž: Zvládneš to, krizová připravenost"
+    url: "https://zvladnesto.cervenykriz.eu/krizova-pripravenost/"
   - name: "Ministerstvo vnitra: Jídlo"
     url: "https://www.72h.gov.cz/cs/jidlo"
 ---
@@ -23,7 +25,7 @@ Kuskus, instantní kaši a obilné vločky stačí zalít studenou vodou a počk
 - Rýže a těstoviny potřebují hodně vody i energie. Do nouzových zásob se hodí méně.
 - Když máš vařič, přidej do zásob instantní jídla a polévky.
 
-> Používání kempingového vařiče uvnitř bytu: TODO: ověřit
+> **Pozor:** Nevař na vařiči ani grilu uvnitř bytu. Zdroje radí vařit venku. Český červený kříž varuje před provozem přístrojů pro venkovní prostředí uvnitř budov, hrozí otrava oxidem uhelnatým.
 
 ## Lednice a mrazák
 

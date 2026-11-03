@@ -6,6 +6,8 @@ description: "Teplo v bytě, topení a oxid uhelnatý"
 sources:
   - name: "Ministerstvo vnitra: příručka 72 hodin (2025)"
     url: "https://www.72h.gov.cz/public/files/2025-09/72-hodin-Jak-se-pripravit-na-krizove-situace-a-spolecne-je-zvladnout_.pdf"
+  - name: "Český červený kříž: Zvládneš to, krizová připravenost"
+    url: "https://zvladnesto.cervenykriz.eu/krizova-pripravenost/"
   - name: "HZS ČR: Jak nakládat s topidly a komíny"
     url: "https://archiv.hzscr.gov.cz/clanek/jak-nakladat-s-topidly-a-kominy.aspx"
   - name: "HZS ČR: Pozor na oxid uhelnatý (2021)"
@@ -32,6 +34,8 @@ sources:
 
 ## Bezpečné topení
 
+- Uvnitř budov netop přístroji určenými pro venkovní prostředí. Hrozí otrava oxidem uhelnatým.
+- Elektrocentrálu nespouštěj uvnitř budov.
 - Topidlo používej jen s palivem, pro které je určené.
 - Nepal biologický odpad, slámu ani plasty.
 - Topidlo na pevná paliva nezapaluj benzínem ani jinými hořlavými kapalinami.
@@ -56,4 +60,4 @@ Co dělat při otravě, najdeš v návodu [První pomoc](../prvni-pomoc/#otrava-
 - Od hořící svíčky neodcházej.
 - Postav ji na pevný a stabilní podklad, kde není průvan.
 - Dej ji mimo dosah dětí a zvířat.
-- Bezpečnější je svíčka LED.
+- Bezpečnější je baterka nebo svíčka LED.

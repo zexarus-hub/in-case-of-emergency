@@ -20,22 +20,24 @@ const isSearch = Astro.url.pathname.startsWith(`${base}hledat`);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#ffffff" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Příručka" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <title>{title} – Krizová příručka</title>
     <link rel="manifest" href={`${base}manifest.webmanifest`} />
     <link rel="icon" href={`${base}icons/icon.svg`} type="image/svg+xml" />
     <link rel="apple-touch-icon" href={`${base}icons/apple-touch-icon.png`} />
-    <!-- Motiv se nastaví ještě před vykreslením, aby světlý režim nebliknul černě. -->
+    <!-- Motiv se nastaví ještě před vykreslením, aby tmavý režim nebliknul bíle. -->
     <script is:inline>
       try {
-        if (localStorage.getItem('theme') === 'light') {
-          document.documentElement.dataset.theme = 'light';
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff');
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.dataset.theme = 'dark';
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
         }
+        var textSize = localStorage.getItem('text-size');
+        if (textSize === '120' || textSize === '150') document.documentElement.dataset.textSize = textSize;
       } catch {}
     </script>
     <script is:inline define:vars={{ swUrl }}>

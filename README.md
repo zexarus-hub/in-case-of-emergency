@@ -2,7 +2,7 @@
 
 Rodinná offline aplikace (PWA) o tom, co mít připravené a co dělat, když nejde elektřina, chybí pitná voda, teplo nebo běžná pomoc. Po prvním načtení funguje úplně bez internetu.
 
-> **Rozpracováno.** Obsah vychází z ověřených zdrojů uvedených u každé kapitoly, ale nenahrazuje kurz první pomoci ani pokyny úřadů a záchranných složek. Místa označená `TODO: ověřit` zdroje nepokrývají.
+> Obsah vychází z ověřených zdrojů uvedených u každé kapitoly, ale nenahrazuje kurz první pomoci ani pokyny úřadů a záchranných složek. Kde zdroje odpověď nemají, text to výslovně uvádí.
 
 ## Co už funguje
 
