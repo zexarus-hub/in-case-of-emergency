@@ -1,0 +1,11 @@
+---
+import { getEntry } from 'astro:content';
+import Chapter from '../components/Chapter.astro';
+import Base from '../layouts/Base.astro';
+
+const entry = (await getEntry('kapitoly', 'rychla-pomoc'))!;
+---
+
+<Base title={entry.data.title}>
+  <Chapter entry={entry} />
+</Base>

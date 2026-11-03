@@ -1,0 +1,32 @@
+---
+const base = import.meta.env.BASE_URL;
+
+// Ikony jsou vložené jako inline SVG, aby nic nebylo potřeba stahovat zvlášť.
+const items = [
+  { href: '', label: 'Pomoc', icon: 'M12 3 2 21h20L12 3zm0 6v6m0 2.5v1' },
+  { href: 'pripav-se/', label: 'Příprava', icon: 'M5 12l4 4 10-10M5 20h14' },
+  { href: 'navody/', label: 'Návody', icon: 'M4 4h7a2 2 0 0 1 1 1 2 2 0 0 1 1-1h7v15h-7a2 2 0 0 0-1 1 2 2 0 0 0-1-1H4V4zm8 1v15' },
+  { href: 'rodinny-plan/', label: 'Plán', icon: 'M3 12l9-8 9 8M6 10v10h12V10' },
+  { href: 'evakuacni-zavazadlo/', label: 'Zavazadlo', icon: 'M6 8h12a2 2 0 0 1 2 2v10H4V10a2 2 0 0 1 2-2zm3 0V4h6v4M4 14h16' },
+  { href: 'mapy/', label: 'Mapy', icon: 'M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2V6zm6-2v14m6-12v14' },
+];
+
+const current = Astro.url.pathname;
+---
+
+<nav class="main-nav" aria-label="Hlavní navigace">
+  {
+    items.map((item) => {
+      const href = `${base}${item.href}`;
+      const active = item.href === '' ? current === base : current.startsWith(href);
+      return (
+        <a href={href} aria-current={active ? 'page' : undefined}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d={item.icon} />
+          </svg>
+          {item.label}
+        </a>
+      );
+    })
+  }
+</nav>

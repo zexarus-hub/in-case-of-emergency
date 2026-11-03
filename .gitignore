@@ -1,0 +1,17 @@
+# Build
+node_modules/
+dist/
+dev-dist/
+.astro/
+
+# Prostředí a lokální nastavení
+.env*
+.vscode/
+.idea/
+*.log
+
+# Exportované zálohy rodinného plánu obsahují soukromá data. Nikdy je necommitovat.
+*.json
+!/package.json
+!/package-lock.json
+!/tsconfig.json

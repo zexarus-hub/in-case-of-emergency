@@ -1,0 +1,23 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Chapter from '../../components/Chapter.astro';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const navody = await getCollection('kapitoly', ({ id }) => id.startsWith('navody/'));
+  return navody.map((entry) => ({
+    params: { slug: entry.id.replace('navody/', '') },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'kapitoly'>;
+}
+
+const { entry } = Astro.props;
+---
+
+<Base title={entry.data.title}>
+  <Chapter entry={entry} />
+</Base>

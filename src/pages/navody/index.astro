@@ -1,0 +1,15 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const navody = (await getCollection('kapitoly', ({ id }) => id.startsWith('navody/'))).sort(
+  (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0),
+);
+---
+
+<Base title="Návody">
+  <h1>Návody</h1>
+  <ul class="link-list">
+    {navody.map((entry) => <li><a href={`${import.meta.env.BASE_URL}${entry.id}/`}>{entry.data.title}</a></li>)}
+  </ul>
+</Base>
