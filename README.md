@@ -54,7 +54,9 @@ src/pages/               stránky
 
 ## Nasazení
 
-Výstup ze složky `dist/` nahraj na libovolný statický hosting s HTTPS. Pokud aplikace poběží v podsložce, například na GitHub Pages, nastav při buildu její cestu:
+Každý push do větve `main` nasadí aplikaci na [GitHub Pages](https://zexarus-hub.github.io/in-case-of-emergency/) přes GitHub Actions.
+
+Pro jiný hosting nahraj výstup ze složky `dist/` na libovolný statický hosting s HTTPS. Pokud aplikace poběží v podsložce, nastav při buildu její cestu:
 
 ```powershell
 $env:BASE_PATH = '/in-case-of-emergency/'; npm run build
