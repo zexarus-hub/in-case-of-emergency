@@ -32,8 +32,8 @@ const numbers = [
           ))
         }
       </div>
-      <a class="meet-card no-print" href={`${base}rodinny-plan/`} data-meet hidden>
-        <Icon name="pin" />
+      <a class="meet-card no-print" data-tone="users" href={`${base}rodinny-plan/`} data-meet hidden>
+        <span class="icon-chip"><Icon name="pin" /></span>
         <span class="row-text">
           <small>Místo srazu</small>
           <span data-meet-place></span>
@@ -62,16 +62,19 @@ const numbers = [
         <h2 class="section-title">Tvoje příprava</h2>
         <div class="stat-grid">
           <a class="stat" data-tone="pot" href={`${base}pripav-se/`}>
+            <span class="icon-chip"><Icon name="clipboard" /></span>
             <small>Zásoby</small>
             <strong data-stat="supplies"></strong>
             <span class="progress"><span data-bar="supplies"></span></span>
           </a>
           <a class="stat" data-tone="users" href={`${base}rodinny-plan/`}>
+            <span class="icon-chip"><Icon name="users" /></span>
             <small>Plán</small>
             <strong data-stat="plan"></strong>
             <span class="progress"><span data-bar="plan"></span></span>
           </a>
           <a class="stat" data-tone="exit" href={`${base}evakuacni-zavazadlo/`}>
+            <span class="icon-chip"><Icon name="exit" /></span>
             <small>Zavazadlo</small>
             <strong data-stat="bag"></strong>
           </a>

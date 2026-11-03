@@ -15,6 +15,7 @@
   --on-tone: #ffffff;
   --check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 13 4 4L19 7'/%3E%3C/svg%3E");
   --check-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 13 4 4L19 7'/%3E%3C/svg%3E");
+  --phone-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z'/%3E%3C/svg%3E");
   --glass: rgb(238 242 255 / 88%);
   --tone-bolt: #ffc400;
   --tone-droplet: #0a66e8;
@@ -45,6 +46,7 @@
   --danger: #ff5a4f;
   --on-danger: #000000;
   --on-tone: #000000;
+  --phone-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z'/%3E%3C/svg%3E");
   --check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 13 4 4L19 7'/%3E%3C/svg%3E");
   --glass: rgb(20 26 51 / 86%);
   --tone-bolt: #ffd000;
@@ -518,21 +520,28 @@ a {
 }
 
 .phone-grid a {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
-  justify-content: center;
+  column-gap: 0.375rem;
   min-height: 3rem;
-  padding: 0.25rem;
+  padding: 0.25rem 0;
   overflow-wrap: anywhere;
   border-radius: var(--radius);
-  background: var(--surface);
-  background: color-mix(in srgb, var(--tone) 50%, transparent);
   color: var(--text);
   font-size: min(0.875rem, 18px);
   line-height: 1.2;
-  text-align: center;
   text-decoration: none;
+}
+
+/* Čísla jsou i v obsahu kapitol, proto ikonu přidává styl a ne šablona. */
+.phone-grid a::before {
+  grid-row: 1 / 3;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.625rem;
+  background: var(--tone) var(--phone-icon) center / 1.25rem no-repeat;
+  content: '';
 }
 
 .phone-grid a:nth-child(2) {
@@ -552,14 +561,21 @@ a {
   font-weight: 800;
 }
 
+/* 155 je tlačítko pro tísňové volání, ne karta. Zůstává plné, aby bylo vidět na první pohled. */
 .phone-grid a:first-child {
+  display: flex;
   grid-column: 1 / -1;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   gap: 0.75rem;
   background: var(--danger);
   color: var(--on-danger);
   font-size: 1.0625rem;
   font-weight: 700;
+}
+
+.phone-grid a:first-child::before {
+  content: none;
 }
 
 .phone-grid a:first-child strong {
@@ -589,11 +605,9 @@ a {
   gap: 0.5rem;
   min-width: 0;
   min-height: 3.25rem;
-  padding: 0.5rem;
+  padding: 0.375rem 0;
   font-size: 0.9375rem;
   border-radius: var(--radius);
-  background: var(--surface);
-  background: color-mix(in srgb, var(--tone) 50%, transparent);
   color: var(--text);
   font-weight: 700;
   line-height: 1.2;
@@ -616,10 +630,9 @@ a {
   gap: 0.5rem;
   min-height: 2.75rem;
   margin-bottom: 0.375rem;
-  padding: 0.375rem 0.75rem;
+  padding: 0.375rem 0;
   border-radius: var(--radius);
-  background: var(--accent);
-  color: var(--on-accent);
+  color: var(--text);
   font-size: 1rem;
   font-weight: 800;
   line-height: 1.2;
@@ -629,7 +642,7 @@ a {
 
 .meet-card .row-text small {
   display: block;
-  color: inherit;
+  color: var(--muted);
   font-size: 0.875rem;
   font-weight: 600;
 }
@@ -645,17 +658,19 @@ a {
 }
 
 .stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.125rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-content: start;
+  gap: 0.125rem 0.375rem;
   min-width: 0;
-  min-height: 4.25rem;
-  padding: 0.5rem 0.625rem;
+  padding: 0.25rem 0;
   border-radius: var(--radius);
-  background: var(--surface);
-  background: color-mix(in srgb, var(--tone) 14%, var(--bg));
   line-height: 1.15;
   text-decoration: none;
+}
+
+.stat .icon-chip {
+  grid-row: 1 / 3;
 }
 
 .stat .progress span {
@@ -669,14 +684,15 @@ a {
 }
 
 .stat strong {
-  flex: 1;
   font-size: 1rem;
   font-weight: 800;
 }
 
 .stat .progress {
   display: block;
+  grid-column: 1 / -1;
   height: 0.375rem;
+  margin-top: 0.25rem;
 }
 
 /* Hledání */
@@ -743,9 +759,8 @@ a {
 
 .search-result {
   display: block;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0;
   border-radius: var(--radius);
-  background: var(--surface);
   line-height: 1.3;
   text-decoration: none;
 }
@@ -781,9 +796,8 @@ a {
   display: flex;
   align-items: center;
   min-height: 2.75rem;
-  padding: 0.375rem 0.75rem;
+  padding: 0.375rem 0;
   border-radius: var(--radius);
-  background: var(--surface);
   font-weight: 700;
   text-decoration: none;
 }
@@ -791,7 +805,6 @@ a {
 .link-list .row-link {
   gap: 0.625rem;
   min-height: 3.25rem;
-  background: color-mix(in srgb, var(--tone) 12%, var(--bg));
 }
 
 .row-text {
@@ -848,10 +861,8 @@ a {
 .prose ol > li {
   position: relative;
   min-height: 2.75rem;
-  padding: 0.5rem 0.75rem 0.5rem 2.75rem;
+  padding: 0.5rem 0 0.5rem 2.75rem;
   border-radius: var(--radius);
-  background: var(--surface);
-  background: color-mix(in srgb, var(--tone) 12%, var(--bg));
   counter-increment: step;
 }
 
@@ -883,10 +894,9 @@ a {
   gap: 0.125rem 0.75rem;
   min-height: 2.75rem;
   margin: 0 0 0.5rem;
-  padding: 0.25rem 0.75rem 0.5rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface);
+  padding: 0.25rem 0 0.5rem;
+  /* Lišta se při posouvání drží nahoře, barva stránky pod ni nepustí text. */
+  background: var(--bg);
 }
 
 .step-progress .progress {
@@ -980,11 +990,8 @@ a {
 
 .prose blockquote {
   margin: 0.625rem 0;
-  padding: 0.5rem 0.75rem;
+  padding: 0.25rem 0 0.25rem 0.75rem;
   border-left: 0.25rem solid var(--tone);
-  border-radius: 0.5rem;
-  background: var(--surface);
-  background: color-mix(in srgb, var(--tone) 18%, var(--bg));
 }
 
 .prose blockquote p:last-child {
@@ -998,6 +1005,8 @@ a {
 
 .jump-list a {
   height: 100%;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
   font-size: 0.9375rem;
   line-height: 1.2;
 }
@@ -1005,9 +1014,7 @@ a {
 /* Karty a ovládací prvky */
 .card {
   margin: 0 0 0.625rem;
-  padding: 0.75rem;
-  border-radius: var(--radius);
-  background: var(--surface);
+  padding: 0.25rem 0;
 }
 
 .card-label {
@@ -1189,15 +1196,11 @@ a {
 .check-list {
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  border-radius: var(--radius);
-  background: var(--surface);
-  background: color-mix(in srgb, var(--tone) 10%, var(--bg));
   list-style: none;
 }
 
 .check-list li + li {
-  border-top: 1px solid var(--bg);
+  border-top: 1px solid var(--line);
 }
 
 .check-item {
@@ -1205,7 +1208,7 @@ a {
   align-items: center;
   gap: 0.625rem;
   min-height: 2.75rem;
-  padding: 0.375rem 0.75rem;
+  padding: 0.375rem 0;
   line-height: 1.25;
   cursor: pointer;
 }
@@ -1346,10 +1349,8 @@ a {
   gap: 0.5rem;
   min-width: 0;
   margin: 0 0 0.625rem;
-  padding: 0.75rem;
+  padding: 0.25rem 0;
   border: 0;
-  border-radius: var(--radius);
-  background: var(--surface);
 }
 
 .plan-form legend {
@@ -1618,6 +1619,10 @@ a {
     flex-wrap: wrap;
     gap: 2mm 6mm;
     margin-bottom: 3mm;
+  }
+
+  .phone-grid a::before {
+    content: none;
   }
 
   .phone-grid a,
