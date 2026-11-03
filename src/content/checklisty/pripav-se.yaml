@@ -1,0 +1,20 @@
+# Ukázková data pro ověření funkcí. Skutečné seznamy s množstvími ze zdrojů přijdou ve fázi 4.
+groups:
+  - id: ukazka-mnozstvi
+    title: Ukázka s množstvím
+    items:
+      - id: polozka-1
+        text: Ukázková položka 1
+        perPerson: 2
+        unit: ks
+      - id: polozka-2
+        text: Ukázková položka 2
+        perPerson: 1.5
+        unit: ks
+  - id: ukazka-bez-mnozstvi
+    title: Ukázka bez množství
+    items:
+      - id: polozka-3
+        text: Ukázková položka 3
+      - id: polozka-4
+        text: Ukázková položka 4

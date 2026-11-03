@@ -159,6 +159,162 @@ a {
   text-decoration: none;
 }
 
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.5rem;
+  min-height: 3.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: 0.4;
+}
+
+.button-primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.button:has(input:focus-visible) {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.notice {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--accent);
+  border-radius: 0.5rem;
+}
+
+.notice p {
+  margin-top: 0;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.stepper-label {
+  flex: 1;
+  font-weight: 600;
+}
+
+.stepper .button {
+  padding: 0;
+  font-size: 1.75rem;
+}
+
+.stepper-value {
+  min-width: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.check-group h2 {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.375rem;
+}
+
+.check-count {
+  flex: none;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.check-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.check-item input {
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.check-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.check-amount {
+  flex: none;
+}
+
+.backup {
+  margin-top: 2.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.backup h2 {
+  margin: 0.5rem 0;
+  font-size: 1.375rem;
+}
+
+.backup p {
+  margin: 0 0 0.75rem;
+}
+
+.backup .notice p {
+  margin-bottom: 0.75rem;
+}
+
+.backup p.notice {
+  margin: 1rem 0;
+}
+
+.backup-actions {
+  display: grid;
+  gap: 0.5rem;
+}
+
 .sources {
   margin-top: 2rem;
   padding-top: 0.75rem;

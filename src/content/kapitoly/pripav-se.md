@@ -4,4 +4,4 @@ sources:
   - name: "TODO: ověřit"
 ---
 
-Obsah se připravuje.
+Zatím jsou tu jen ukázkové položky. Skutečné seznamy se připravují.

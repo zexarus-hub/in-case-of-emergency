@@ -13,4 +13,25 @@ const kapitoly = defineCollection({
   }),
 });
 
-export const collections = { kapitoly };
+const checklisty = defineCollection({
+  loader: glob({ pattern: '**/*.yaml', base: './src/content/checklisty' }),
+  schema: z.object({
+    groups: z.array(
+      z.object({
+        id: z.string(),
+        title: z.string(),
+        items: z.array(
+          z.object({
+            id: z.string(),
+            text: z.string(),
+            // Množství na jednu osobu. Aplikace ho přepočítá podle počtu osob.
+            perPerson: z.number().positive().optional(),
+            unit: z.string().optional(),
+          }),
+        ),
+      }),
+    ),
+  }),
+});
+
+export const collections = { kapitoly, checklisty };
