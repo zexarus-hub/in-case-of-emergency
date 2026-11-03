@@ -1,0 +1,73 @@
+# Položky podle příručky 72 hodin (Ministerstvo vnitra, 2025), str. 14.
+groups:
+  - id: osobni-veci
+    title: Osobní věci
+    items:
+      - id: doklady
+        text: Občanský průkaz, pas, kartička pojišťovny
+      - id: kopie
+        text: Kopie rodného listu, oddacího listu a důležitých smluv
+      - id: klice
+        text: Klíče
+      - id: penize
+        text: Hotovost a platební karty, mince i bankovky různé hodnoty
+  - id: zdravi
+    title: Zdraví a hygiena
+    items:
+      - id: lekarnicka
+        text: Lékárnička a pravidelně užívané léky na týden
+      - id: bryle
+        text: Brýle, kontaktní čočky
+      - id: dezinfekce
+        text: Dezinfekce na ruce
+      - id: hygiena
+        text: Toaletní papír a hygienické potřeby
+      - id: rucnik
+        text: Ručník
+  - id: jidlo
+    title: Jídlo a pití
+    items:
+      - id: voda
+        text: Balená voda na pití, pro dospělého nouzově 2 litry denně
+      - id: jidlo
+        text: Trvanlivé jídlo na den
+      - id: nadobi
+        text: Hrnek, miska, příbor
+      - id: nuz
+        text: Multifunkční nůž
+  - id: obleceni
+    title: Oblečení a spaní
+    items:
+      - id: obuv
+        text: Pevná obuv, pláštěnka
+      - id: pradlo
+        text: Náhradní oblečení a prádlo
+      - id: spani
+        text: Spacák nebo deka, karimatka
+  - id: elektronika
+    title: Elektronika
+    items:
+      - id: telefon
+        text: Telefon s nabíječkou
+      - id: cisla
+        text: Telefonní čísla blízkých vypsaná na papíře
+      - id: radio
+        text: Rádio a svítilna na baterie
+      - id: powerbanka
+        text: Nabitá powerbanka, náhradní baterie a kabely
+  - id: zabava
+    title: Zábava
+    items:
+      - id: tuzka
+        text: Tužka a papír
+      - id: kniha
+        text: Kniha, časopis, společenská hra
+      - id: hracky
+        text: Hračky pro děti
+  - id: mazlicci
+    title: Domácí mazlíčci
+    items:
+      - id: krmivo
+        text: Krmivo, léky, misky
+      - id: prepravka
+        text: Přepravka, náhubek, vodítko

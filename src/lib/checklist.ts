@@ -1,6 +1,7 @@
 import { readJson, writeItem } from './storage';
 
 export const CHECKLIST_KEY = 'checklist';
+export const BAG_CHECKLIST_KEY = 'bag-checklist';
 export const MIN_PERSONS = 1;
 export const MAX_PERSONS = 20;
 
@@ -27,13 +28,13 @@ export function emptyChecklist(): ChecklistState {
   return { persons: MIN_PERSONS, checked: {} };
 }
 
-export function loadChecklist(): ChecklistState {
-  const stored = readJson(CHECKLIST_KEY);
+export function loadChecklist(key = CHECKLIST_KEY): ChecklistState {
+  const stored = readJson(key);
   return isChecklistState(stored) ? stored : emptyChecklist();
 }
 
-export function saveChecklist(state: ChecklistState): boolean {
-  return writeItem(CHECKLIST_KEY, JSON.stringify(state));
+export function saveChecklist(state: ChecklistState, key = CHECKLIST_KEY): boolean {
+  return writeItem(key, JSON.stringify(state));
 }
 
 export function clampPersons(persons: number): number {

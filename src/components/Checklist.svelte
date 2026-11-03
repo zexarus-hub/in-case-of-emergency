@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { RESTORED_EVENT } from '../lib/backup';
   import {
+    CHECKLIST_KEY,
     clampPersons,
     emptyChecklist,
     formatQuantity,
@@ -24,7 +25,11 @@
     items: Item[];
   }
 
-  let { groups }: { groups: Group[] } = $props();
+  let {
+    groups,
+    storageKey = CHECKLIST_KEY,
+    showPersons = true,
+  }: { groups: Group[]; storageKey?: string; showPersons?: boolean } = $props();
 
   let data = $state(emptyChecklist());
   let saveFailed = $state(false);
@@ -33,7 +38,7 @@
   const doneIn = (group: Group) => group.items.filter((item) => data.checked[keyOf(group, item)]).length;
 
   function save() {
-    saveFailed = !saveChecklist($state.snapshot(data));
+    saveFailed = !saveChecklist($state.snapshot(data), storageKey);
   }
 
   function setPersons(persons: number) {
@@ -49,7 +54,7 @@
   // Načítá se až v prohlížeči. Na serveru se vykreslí prázdný seznam.
   onMount(() => {
     const reload = () => {
-      data = loadChecklist();
+      data = loadChecklist(storageKey);
     };
     reload();
     window.addEventListener(RESTORED_EVENT, reload);
@@ -61,12 +66,14 @@
   <p class="notice" role="alert">Změnu se nepodařilo uložit. Po zavření aplikace se ztratí.</p>
 {/if}
 
-<div class="stepper" role="group" aria-label="Počet osob">
-  <span class="stepper-label">Počet osob</span>
-  <button type="button" class="button" aria-label="Ubrat osobu" disabled={data.persons <= MIN_PERSONS} onclick={() => setPersons(data.persons - 1)}>−</button>
-  <output class="stepper-value" aria-live="polite">{data.persons}</output>
-  <button type="button" class="button" aria-label="Přidat osobu" disabled={data.persons >= MAX_PERSONS} onclick={() => setPersons(data.persons + 1)}>+</button>
-</div>
+{#if showPersons}
+  <div class="stepper" role="group" aria-label="Počet osob">
+    <span class="stepper-label">Počet osob</span>
+    <button type="button" class="button" aria-label="Ubrat osobu" disabled={data.persons <= MIN_PERSONS} onclick={() => setPersons(data.persons - 1)}>−</button>
+    <output class="stepper-value" aria-live="polite">{data.persons}</output>
+    <button type="button" class="button" aria-label="Přidat osobu" disabled={data.persons >= MAX_PERSONS} onclick={() => setPersons(data.persons + 1)}>+</button>
+  </div>
+{/if}
 
 {#each groups as group (group.id)}
   <section class="check-group">

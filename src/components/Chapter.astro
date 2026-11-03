@@ -10,7 +10,9 @@ const { Content } = await render(entry);
 ---
 
 <h1>{entry.data.title}</h1>
-<Content />
+<div class="prose">
+  <Content />
+</div>
 <slot />
 <footer class="sources">
   <strong>Zdroje:</strong>

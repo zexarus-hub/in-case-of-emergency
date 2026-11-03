@@ -1,11 +1,20 @@
 ---
 import { getEntry } from 'astro:content';
+import BackupPanel from '../components/BackupPanel.svelte';
+import BagCheckPanel from '../components/BagCheckPanel.svelte';
 import Chapter from '../components/Chapter.astro';
+import Checklist from '../components/Checklist.svelte';
 import Base from '../layouts/Base.astro';
+import { BAG_CHECKLIST_KEY } from '../lib/checklist';
 
 const entry = (await getEntry('kapitoly', 'evakuacni-zavazadlo'))!;
+const checklist = (await getEntry('checklisty', 'evakuacni-zavazadlo'))!;
 ---
 
 <Base title={entry.data.title}>
-  <Chapter entry={entry} />
+  <Chapter entry={entry}>
+    <BagCheckPanel client:load />
+    <Checklist client:load groups={checklist.data.groups} storageKey={BAG_CHECKLIST_KEY} showPersons={false} />
+    <BackupPanel client:load />
+  </Chapter>
 </Base>

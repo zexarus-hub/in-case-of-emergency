@@ -2,19 +2,20 @@
 
 Rodinná offline aplikace (PWA) o tom, co mít připravené a co dělat, když nejde elektřina, chybí pitná voda, teplo nebo běžná pomoc. Po prvním načtení funguje úplně bez internetu.
 
-> **Rozpracováno.** Kapitoly a checklisty zatím obsahují jen zástupný text a ukázkové položky. Aplikaci zatím nepoužívej jako zdroj informací pro skutečnou krizi.
+> **Rozpracováno.** Obsah vychází z ověřených zdrojů uvedených u každé kapitoly, ale nenahrazuje kurz první pomoci ani pokyny úřadů a záchranných složek. Místa označená `TODO: ověřit` zdroje nepokrývají.
 
 ## Co už funguje
 
 - Navigace mezi kapitolami, tmavý režim s čistou černou a volitelný světlý režim.
 - Offline provoz přes service worker, který při instalaci uloží všechny stránky a assety.
-- Checklist s přepočtem množství podle počtu osob.
+- Rychlá pomoc podle situace, návody a checklist zásob s přepočtem množství podle počtu osob.
+- Evakuační zavazadlo s datem poslední kontroly.
+- Návod na stažení offline map v Mapy.com.
 - Rodinný plán: kontakty, místa srazu, trasy, časová pravidla, vyzvedávání dětí a starších, klíč a zásoby. Jde vytisknout, i prázdný k vyplnění tužkou.
 - Export a import zálohy jako soubor JSON pro přenos mezi telefony.
 
 ## Co se připravuje
 
-- Obsah kapitol podle ověřených zdrojů (HZS ČR, Ministerstvo vnitra, Český červený kříž, Státní zdravotní ústav).
 - Tisková verze celé příručky.
 
 ## Soukromí

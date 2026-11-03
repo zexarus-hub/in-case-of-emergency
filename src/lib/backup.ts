@@ -1,4 +1,5 @@
-import { CHECKLIST_KEY, isChecklistState } from './checklist';
+import { BAG_CHECK_KEY, isBagCheck } from './bagCheck';
+import { BAG_CHECKLIST_KEY, CHECKLIST_KEY, isChecklistState } from './checklist';
 import { FAMILY_PLAN_KEY, isFamilyPlan } from './familyPlan';
 import { readItem, readJson, removeItem, writeItem } from './storage';
 
@@ -12,6 +13,8 @@ export const RESTORED_EVENT = 'backup:restored';
 // Co všechno záloha obsahuje a jak se to kontroluje. Motiv je nastavení zařízení, proto v záloze není.
 const VALIDATORS: Record<string, (value: unknown) => boolean> = {
   [CHECKLIST_KEY]: isChecklistState,
+  [BAG_CHECKLIST_KEY]: isChecklistState,
+  [BAG_CHECK_KEY]: isBagCheck,
   [FAMILY_PLAN_KEY]: isFamilyPlan,
 };
 

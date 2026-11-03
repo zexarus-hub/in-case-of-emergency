@@ -1,20 +1,125 @@
-# Ukázková data pro ověření funkcí. Skutečné seznamy s množstvími ze zdrojů přijdou ve fázi 4.
+# Položky podle příručky 72 hodin (Ministerstvo vnitra, 2025) a stránek 72h.gov.cz.
+# Množství na osobu uvádět jen tehdy, když ho zdroj skutečně udává.
 groups:
-  - id: ukazka-mnozstvi
-    title: Ukázka s množstvím
+  - id: voda
+    title: Voda
     items:
-      - id: polozka-1
-        text: Ukázková položka 1
-        perPerson: 2
-        unit: ks
-      - id: polozka-2
-        text: Ukázková položka 2
-        perPerson: 1.5
-        unit: ks
-  - id: ukazka-bez-mnozstvi
-    title: Ukázka bez množství
+      - id: balena-voda
+        text: Balená voda na pití
+        perPerson: 6
+        unit: l
+      - id: nadoby
+        text: Kanystry nebo jiné uzavíratelné nádoby
+  - id: jidlo
+    title: Jídlo
     items:
-      - id: polozka-3
-        text: Ukázková položka 3
-      - id: polozka-4
-        text: Ukázková položka 4
+      - id: konzervy-maso
+        text: Konzervované maso a fazole
+      - id: konzervy-ovoce
+        text: Konzervované ovoce a zelenina
+      - id: pecivo
+        text: Trvanlivé pečivo
+      - id: cerealie
+        text: Cereálie, müsli, ovesné vločky, ořechy a semínka
+      - id: susene
+        text: Sušené ovoce a sušené maso
+      - id: tycinky
+        text: Tyčinky, sušenky, čokoláda a hroznový cukr
+      - id: mleko
+        text: Trvanlivé mléko
+      - id: dzemy
+        text: Džemy, med a zavařeniny
+      - id: napoje
+        text: Sirupy a džusy
+      - id: instantni
+        text: Instantní jídla a polévky, pokud máš vařič
+      - id: varic
+        text: Plynový vařič a zápalky
+      - id: dieta
+        text: Jídlo pro alergiky a speciální diety
+      - id: zvirata
+        text: Krmivo pro zvířata
+  - id: svetlo
+    title: Světlo
+    items:
+      - id: svitilna
+        text: Svítilna na baterie
+      - id: baterie
+        text: Náhradní baterie
+  - id: teplo
+    title: Teplo
+    items:
+      - id: obleceni
+        text: Teplé oblečení a obuv pro všechny
+      - id: prikryvky
+        text: Přikrývky a deky pro všechny
+  - id: energie
+    title: Energie a informace
+    items:
+      - id: radio
+        text: Rádio na baterie
+      - id: powerbanka
+        text: Nabitá powerbanka
+      - id: kabely
+        text: Nabíječky a kabely
+      - id: auto
+        text: Plná nádrž v autě, u elektromobilu nabitá baterie
+  - id: leky
+    title: Léky a lékárnička
+    items:
+      - id: pravidelne-leky
+        text: Pravidelně užívané léky na týden, včetně popisu užívání
+      - id: bezne-leky
+        text: Léky proti bolesti, horečce a průjmu
+      - id: obvazy
+        text: Obvazy a náplasti
+      - id: dezinfekce
+        text: Dezinfekce na rány a ruce
+      - id: rukavice
+        text: Jednorázové rukavice
+      - id: skrtidlo
+        text: Škrtidlo
+      - id: folie
+        text: Záchranářská deka (fólie na udržení tepla)
+      - id: respiratory
+        text: Respirátory
+      - id: teplomer
+        text: Teploměr
+      - id: pinzeta
+        text: Pinzeta a nůžky
+      - id: tuzka
+        text: Tužka a papír
+  - id: hotovost
+    title: Hotovost
+    items:
+      - id: mince
+        text: Mince a bankovky různé hodnoty
+  - id: dokumenty
+    title: Dokumenty
+    items:
+      - id: kopie
+        text: Kopie důležitých dokumentů
+      - id: cisla-papir
+        text: Telefonní čísla blízkých zapsaná na papíře
+      - id: telefon
+        text: Důležitá čísla a kopie dokumentů uložené v telefonu
+  - id: hygiena
+    title: Hygiena
+    items:
+      - id: toaletni-papir
+        text: Toaletní papír a hygienické potřeby
+      - id: dezinfekce-ruce
+        text: Dezinfekce na ruce
+      - id: pytle
+        text: Pytle na odpadky
+  - id: dalsi
+    title: Další výbava
+    items:
+      - id: nuz
+        text: Multifunkční nůž
+      - id: paska
+        text: Pevná lepicí páska
+      - id: hasici
+        text: Hasicí přístroj nebo hasicí deka
+      - id: detektory
+        text: Autonomní detektory kouře a plynů (oxid uhelnatý, propan-butan)

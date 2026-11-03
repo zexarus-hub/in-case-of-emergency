@@ -159,6 +159,98 @@ a {
   text-decoration: none;
 }
 
+.prose h2 {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.375rem;
+  scroll-margin-top: 1rem;
+}
+
+.prose h3 {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 1.125rem;
+  scroll-margin-top: 1rem;
+}
+
+.prose p {
+  margin: 0 0 0.75rem;
+}
+
+.prose ol,
+.prose ul:not(.link-list) {
+  margin: 0 0 0.75rem;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose blockquote {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--accent);
+  border-radius: 0.5rem;
+}
+
+.prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.jump-list {
+  margin-bottom: 1.5rem;
+}
+
+.phone-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+}
+
+.phone-grid a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 4.5rem;
+  padding: 0.5rem;
+  border: 2px solid var(--accent);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  font-size: 1rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.phone-grid strong {
+  font-size: 1.75rem;
+  line-height: 1.1;
+}
+
+.bag-check {
+  margin: 1.5rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.bag-check h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.375rem;
+}
+
+.bag-check p {
+  margin: 0 0 0.75rem;
+}
+
+.bag-check-date {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.bag-check .button {
+  width: 100%;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
