@@ -1,11 +1,16 @@
 ---
 import { getEntry } from 'astro:content';
+import BackupPanel from '../components/BackupPanel.svelte';
 import Chapter from '../components/Chapter.astro';
+import FamilyPlanForm from '../components/FamilyPlanForm.svelte';
 import Base from '../layouts/Base.astro';
 
 const entry = (await getEntry('kapitoly', 'rodinny-plan'))!;
 ---
 
 <Base title={entry.data.title}>
-  <Chapter entry={entry} />
+  <Chapter entry={entry}>
+    <FamilyPlanForm client:load />
+    <BackupPanel client:load />
+  </Chapter>
 </Base>

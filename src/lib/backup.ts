@@ -1,4 +1,5 @@
 import { CHECKLIST_KEY, isChecklistState } from './checklist';
+import { FAMILY_PLAN_KEY, isFamilyPlan } from './familyPlan';
 import { readItem, readJson, removeItem, writeItem } from './storage';
 
 const APP_ID = 'krizova-prirucka';
@@ -11,6 +12,7 @@ export const RESTORED_EVENT = 'backup:restored';
 // Co všechno záloha obsahuje a jak se to kontroluje. Motiv je nastavení zařízení, proto v záloze není.
 const VALIDATORS: Record<string, (value: unknown) => boolean> = {
   [CHECKLIST_KEY]: isChecklistState,
+  [FAMILY_PLAN_KEY]: isFamilyPlan,
 };
 
 export interface Backup {

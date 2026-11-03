@@ -9,11 +9,11 @@ Rodinná offline aplikace (PWA) o tom, co mít připravené a co dělat, když n
 - Navigace mezi kapitolami, tmavý režim s čistou černou a volitelný světlý režim.
 - Offline provoz přes service worker, který při instalaci uloží všechny stránky a assety.
 - Checklist s přepočtem množství podle počtu osob.
+- Rodinný plán: kontakty, místa srazu, trasy, časová pravidla, vyzvedávání dětí a starších, klíč a zásoby. Jde vytisknout, i prázdný k vyplnění tužkou.
 - Export a import zálohy jako soubor JSON pro přenos mezi telefony.
 
 ## Co se připravuje
 
-- Rodinný plán: kontakty, místa srazu, trasy a časová pravidla.
 - Obsah kapitol podle ověřených zdrojů (HZS ČR, Ministerstvo vnitra, Český červený kříž, Státní zdravotní ústav).
 - Tisková verze celé příručky.
 

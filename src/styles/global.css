@@ -315,6 +315,71 @@ a {
   gap: 0.5rem;
 }
 
+.plan-hint {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.plan-form fieldset {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+  margin: 1.5rem 0;
+  padding: 0;
+  border: 0;
+}
+
+.plan-form legend {
+  margin-bottom: 0.5rem;
+  padding: 0;
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+.plan-form label {
+  display: grid;
+  gap: 0.25rem;
+  font-weight: 600;
+}
+
+.plan-form input,
+.plan-form textarea {
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-weight: 400;
+}
+
+.plan-form textarea {
+  resize: vertical;
+}
+
+.plan-form ::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.plan-row {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+}
+
+.plan-print-button {
+  width: 100%;
+}
+
+.plan-print {
+  display: none;
+}
+
 .sources {
   margin-top: 2rem;
   padding-top: 0.75rem;
@@ -326,4 +391,83 @@ a {
 .sources ul {
   margin: 0;
   padding-left: 1.25rem;
+}
+
+/* Tisk: černobíle, bez navigace a ovládacích prvků. */
+@media print {
+  :root,
+  :root[data-theme='light'] {
+    color-scheme: light;
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --text: #000000;
+    --muted: #000000;
+    --border: #000000;
+  }
+
+  body {
+    padding: 0;
+    font-size: 11pt;
+  }
+
+  .main-nav,
+  .app-header,
+  .backup,
+  .plan-form,
+  .no-print {
+    display: none;
+  }
+
+  .page {
+    max-width: none;
+    padding: 0;
+  }
+
+  .plan-print {
+    display: block;
+  }
+
+  .plan-print h2 {
+    margin: 1.25rem 0 0.5rem;
+    font-size: 14pt;
+    break-after: avoid;
+  }
+
+  .plan-print h3 {
+    margin: 0.5rem 0 0.25rem;
+    font-size: 11pt;
+    break-after: avoid;
+  }
+
+  .plan-print table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .plan-print tr {
+    break-inside: avoid;
+  }
+
+  .plan-print th,
+  .plan-print td {
+    height: 2em;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #000000;
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+
+  .print-value {
+    min-height: 2em;
+    margin: 0;
+    padding: 0.25rem 0;
+    border-bottom: 1px solid #000000;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    break-inside: avoid;
+  }
+
+  .print-value-tall {
+    min-height: 6em;
+  }
 }

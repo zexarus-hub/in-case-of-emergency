@@ -4,4 +4,4 @@ sources:
   - name: "TODO: ověřit"
 ---
 
-Obsah se připravuje.
+Vyplň plán společně s rodinou. Vytiskni ho a dej kopii každému, protože telefon se může vybít.
